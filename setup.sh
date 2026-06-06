@@ -5,7 +5,7 @@
 set -e
 
 PROJECT_NAME=${1:-"meu-projeto"}
-TARGET_DIR=${2:-"$(pwd)/$PROJECT_NAME"}
+TARGET_DIR="${2:-"$(pwd)"}/$PROJECT_NAME"
 TEMPLATE_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 if [ -z "$1" ]; then
@@ -46,9 +46,6 @@ echo ""
 echo "Proximos passos:"
 echo "  1. cd $TARGET_DIR"
 echo "  2. Abra no Claude Code (code . ou cursor .)"
-echo "  3. /sync-context          → gera CLAUDE.md com contexto real do projeto"
-echo "  4. /create-kb 'fastapi'   → cria KB para o seu stack"
-echo "  5. /brainstorm '...'      → começa a primeira feature"
-echo ""
-echo "Para criar agentes de dominio:"
-echo "  Copie .claude/agents/_template.md.example para .claude/agents/domain/"
+echo "  3. /project-init          → instala KBs, cria agentes de dominio e preenche CLAUDE.md"
+echo "  4. /sync-context          → gera arquitetura apos adicionar codigo-fonte"
+echo "  5. /brainstorm '...'      → comeca a primeira feature"
