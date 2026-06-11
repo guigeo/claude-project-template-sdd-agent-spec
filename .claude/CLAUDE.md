@@ -178,7 +178,7 @@ O template inclui apenas os templates de estrutura KB. KBs reais são criadas no
 | `/project-init` | ✅ Concluído | Kickstart interativo com KBs + agentes + CLAUDE.md |
 | `/new-project` + catalog.yaml | ✅ Concluído | Cópia seletiva por stack; KBs reaproveitáveis acumulam no acervo central |
 | `/contribute` (write-back) | 🔜 Pendente | Enviar KB/agente reaproveitável criado num filho de volta ao acervo |
-| `/template-update` | 🔜 Pendente | Sincronizar projetos existentes com updates do template (usa template.yaml) |
+| `/template-update` | 🔜 Pendente | Sincronizar projetos existentes com updates do template (usa template-link.yaml) |
 
 ---
 

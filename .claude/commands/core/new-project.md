@@ -159,7 +159,7 @@ Preencher o `.claude/CLAUDE.md` do filho conforme `/project-init` Passo 7
 (substituir todos os `[placeholder]` por conteúdo real de P1–P6, incluindo a tabela
 de KBs copiadas e os agentes de domínio na tabela de agentes).
 
-Criar `{filho}/.claude/template.yaml`:
+Criar `{filho}/.claude/template-link.yaml`:
 
 ```yaml
 template_path: {caminho absoluto deste repositório}
@@ -195,7 +195,7 @@ PROJETO CRIADO
 ✓ Agentes copiados: {n} ({core} core + {opt} por match de stack)
 ✓ KBs copiadas: {n}  |  KBs novas no acervo central: {n}
 ✓ Agentes de domínio criados: {lista}
-✓ CLAUDE.md preenchido  |  template.yaml gravado ({SHA curto})
+✓ CLAUDE.md preenchido  |  template-link.yaml gravado ({SHA curto})
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 PRÓXIMOS PASSOS:
   1. cd {caminho} && abrir no Claude Code
@@ -219,7 +219,7 @@ PRÓXIMOS PASSOS:
 [ ] _index.yaml do filho lista apenas as KBs copiadas
 [ ] Agentes de domínio sem {placeholder}; KB paths reais
 [ ] CLAUDE.md do filho sem [placeholder]
-[ ] template.yaml gravado com SHA e lista de componentes
+[ ] template-link.yaml gravado com SHA e lista de componentes
 [ ] Commits feitos (template, se houve KB nova; filho sempre)
 [ ] Relatório final exibido
 ```

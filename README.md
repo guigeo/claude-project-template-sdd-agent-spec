@@ -46,7 +46,7 @@ Abra **este repositório** no Claude Code e rode:
 O comando faz a entrevista de 6 perguntas **antes** de copiar e então:
 - Seleciona via [catalog.yaml](catalog.yaml) só os agentes que casam com seu stack (um projeto Next.js não recebe os agentes Spark/AWS)
 - Copia as KBs do acervo central que se aplicam; se faltar alguma, propõe criar — a KB nova fica **no template** e é reaproveitada nos próximos projetos
-- Cria os agentes de domínio do projeto, preenche o `CLAUDE.md` e grava o vínculo de versão em `.claude/template.yaml`
+- Cria os agentes de domínio do projeto, preenche o `CLAUDE.md` e grava o vínculo de versão em `.claude/template-link.yaml`
 
 ### Opção B — `setup.sh` (fallback: copia tudo)
 
