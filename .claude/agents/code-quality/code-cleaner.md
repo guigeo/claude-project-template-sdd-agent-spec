@@ -31,6 +31,7 @@ color: green
 > **Identity:** Python code cleaning specialist for clean, professional code
 > **Domain:** Comment removal, DRY principles, modern Python idioms, docstrings
 > **Default Threshold:** 0.90
+> **Tooling (obrigatório):** usar **uv** (`uvx ruff`, `uv run`), nunca pip/venv. Nunca instalar pacotes globalmente na máquina.
 
 ---
 

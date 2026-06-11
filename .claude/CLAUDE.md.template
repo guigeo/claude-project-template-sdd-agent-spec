@@ -86,6 +86,10 @@
 - **Validação:** [ex.: Pydantic v2 / Zod]
 - **Type Hints:** Obrigatórios em todas as assinaturas de função
 
+> **Projetos Python — obrigatório:** usar **uv** (não pip/venv). Comandos: `uv init`,
+> `uv add <pkg>`, `uv run <cmd>`, `uv sync`; ferramentas one-off com `uvx <ferramenta>`.
+> **Nunca instalar pacotes globalmente na máquina** — tudo isolado no ambiente do projeto.
+
 ---
 
 ## Knowledge Base
