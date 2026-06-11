@@ -1,5 +1,6 @@
 #!/bin/bash
-# setup.sh — Inicializa um novo projeto com o claude-project-template
+# setup.sh — Inicializa um novo projeto com o claude-project-template (copia tudo)
+# Para cópia SELETIVA por stack, prefira rodar /new-project no Claude Code dentro deste repo.
 # Uso: ./setup.sh <nome-do-projeto> [diretorio-destino]
 
 set -e
@@ -11,6 +12,14 @@ TEMPLATE_DIR="$(cd "$(dirname "$0")" && pwd)"
 if [ -z "$1" ]; then
   echo "Uso: ./setup.sh <nome-do-projeto> [diretorio-destino]"
   echo "Exemplo: ./setup.sh minha-api /Users/joao/Projetos"
+  echo ""
+  echo "Dica: para copia seletiva por stack, rode /new-project no Claude Code dentro do template."
+  exit 1
+fi
+
+# Nunca sobrescrever um destino existente com conteudo
+if [ -d "$TARGET_DIR" ] && [ -n "$(ls -A "$TARGET_DIR" 2>/dev/null)" ]; then
+  echo "ERRO: o diretorio $TARGET_DIR ja existe e nao esta vazio. Abortando."
   exit 1
 fi
 
@@ -21,8 +30,17 @@ echo ""
 # Cria a pasta do projeto
 mkdir -p "$TARGET_DIR"
 
-# Copia toda a estrutura .claude
+# Copia toda a estrutura .claude (sem lixo do macOS)
 cp -r "$TEMPLATE_DIR/.claude" "$TARGET_DIR/.claude"
+find "$TARGET_DIR" -name ".DS_Store" -delete
+
+# O CLAUDE.md do template descreve o proprio template — o filho recebe a versao placeholder
+if [ -f "$TARGET_DIR/.claude/CLAUDE.md.template" ]; then
+  mv "$TARGET_DIR/.claude/CLAUDE.md.template" "$TARGET_DIR/.claude/CLAUDE.md"
+fi
+
+# /new-project e exclusivo do template
+rm -f "$TARGET_DIR/.claude/commands/core/new-project.md"
 
 # Cria .gitignore basico
 cat > "$TARGET_DIR/.gitignore" << 'EOF'

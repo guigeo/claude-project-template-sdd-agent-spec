@@ -44,7 +44,8 @@
 │   └── kb/
 │       ├── _index.yaml              # Registro de domínios KB
 │       └── _templates/              # Templates para criação de KBs
-├── setup.sh                         # Cria projeto novo a partir deste template
+├── catalog.yaml                     # Catálogo de componentes — metadados de seleção (scope/stacks/domains/clouds)
+├── setup.sh                         # Fallback: cria projeto novo copiando tudo (prefira /new-project)
 └── README.md                        # Documentação pública do template
 ```
 
@@ -142,7 +143,8 @@ O `setup.sh` só age em projetos **novos**. Para projetos existentes, copiar man
 
 | Comando | Propósito |
 |---------|-----------|
-| `/project-init` | **Primeiro comando em todo projeto** — instala KBs, cria agentes de domínio, preenche CLAUDE.md |
+| `/new-project` | **Roda NO template** — entrevista, seleciona componentes via catalog.yaml e cria o projeto filho com cópia seletiva |
+| `/project-init` | **Primeiro comando em projetos criados sem /new-project** — instala KBs, cria agentes de domínio, preenche CLAUDE.md |
 | `/brainstorm` | Explorar ideias em diálogo colaborativo |
 | `/define` | Capturar e validar requisitos |
 | `/design` | Criar arquitetura técnica |
@@ -174,7 +176,9 @@ O template inclui apenas os templates de estrutura KB. KBs reais são criadas no
 | Feature | Status | Descrição |
 |---------|--------|-----------|
 | `/project-init` | ✅ Concluído | Kickstart interativo com KBs + agentes + CLAUDE.md |
-| Mecanismo de update | 🔜 Pendente | Notificar projetos existentes sobre updates do template |
+| `/new-project` + catalog.yaml | ✅ Concluído | Cópia seletiva por stack; KBs reaproveitáveis acumulam no acervo central |
+| `/contribute` (write-back) | 🔜 Pendente | Enviar KB/agente reaproveitável criado num filho de volta ao acervo |
+| `/template-update` | 🔜 Pendente | Sincronizar projetos existentes com updates do template (usa template.yaml) |
 
 ---
 

@@ -1,0 +1,252 @@
+# Catálogo de Componentes — Fonte única de verdade do template
+# Consumido por /new-project para seleção do que copiar para cada projeto filho.
+#
+# Regras de seleção:
+#   - scope: core     → copiado para TODO projeto, sem exceção
+#   - scope: optional → copiado quando houver interseção entre os metadados
+#                       (stacks / domains / clouds) e as respostas da entrevista
+#   - scope: project  → nunca vive no template; criado dentro do projeto filho
+#                       (ex.: {projeto}-expert, KBs de regra de negócio)
+#
+# Taxonomia (alinhar com a entrevista do /new-project e /project-init):
+#   domains: api-web | data-pipeline | ai-llm | cli | frontend-fullstack | infra-devops
+#   clouds:  aws | gcp | azure | databricks | local
+#   stacks:  nomes de tecnologia em kebab-case (python, spark, fastapi, terraform...)
+
+version: "1.0"
+updated: "2026-06-10"
+
+# =============================================================================
+# AGENTES
+# =============================================================================
+
+agents:
+  # --- Workflow SDD (core — o framework depende deles) ---
+  - name: brainstorm-agent
+    path: .claude/agents/workflow/brainstorm-agent.md
+    category: workflow
+    scope: core
+  - name: define-agent
+    path: .claude/agents/workflow/define-agent.md
+    category: workflow
+    scope: core
+  - name: design-agent
+    path: .claude/agents/workflow/design-agent.md
+    category: workflow
+    scope: core
+  - name: build-agent
+    path: .claude/agents/workflow/build-agent.md
+    category: workflow
+    scope: core
+  - name: ship-agent
+    path: .claude/agents/workflow/ship-agent.md
+    category: workflow
+    scope: core
+  - name: iterate-agent
+    path: .claude/agents/workflow/iterate-agent.md
+    category: workflow
+    scope: core
+
+  # --- Dev Loop (core) ---
+  - name: prompt-crafter
+    path: .claude/agents/dev/prompt-crafter.md
+    category: dev
+    scope: core
+  - name: dev-loop-executor
+    path: .claude/agents/dev/dev-loop-executor.md
+    category: dev
+    scope: core
+
+  # --- Exploração (core) ---
+  - name: codebase-explorer
+    path: .claude/agents/exploration/codebase-explorer.md
+    category: exploration
+    scope: core
+  - name: kb-architect
+    path: .claude/agents/exploration/kb-architect.md
+    category: exploration
+    scope: core
+
+  # --- Comunicação (core) ---
+  - name: adaptive-explainer
+    path: .claude/agents/communication/adaptive-explainer.md
+    category: communication
+    scope: core
+  - name: meeting-analyst
+    path: .claude/agents/communication/meeting-analyst.md
+    category: communication
+    scope: core
+  - name: the-planner
+    path: .claude/agents/communication/the-planner.md
+    category: communication
+    scope: core
+
+  # --- Qualidade de código ---
+  - name: code-reviewer
+    path: .claude/agents/code-quality/code-reviewer.md
+    category: code-quality
+    scope: core
+  - name: code-documenter
+    path: .claude/agents/code-quality/code-documenter.md
+    category: code-quality
+    scope: core
+  - name: code-cleaner
+    path: .claude/agents/code-quality/code-cleaner.md
+    category: code-quality
+    scope: optional
+    stacks: [python]
+  - name: python-developer
+    path: .claude/agents/code-quality/python-developer.md
+    category: code-quality
+    scope: optional
+    stacks: [python]
+  - name: test-generator
+    path: .claude/agents/code-quality/test-generator.md
+    category: code-quality
+    scope: optional
+    stacks: [python, spark]
+  - name: dual-reviewer
+    path: .claude/agents/code-quality/dual-reviewer.md
+    category: code-quality
+    scope: optional
+    requires: [coderabbit-cli]
+
+  # --- AI / ML ---
+  - name: llm-specialist
+    path: .claude/agents/ai-ml/llm-specialist.md
+    category: ai-ml
+    scope: optional
+    domains: [ai-llm]
+  - name: genai-architect
+    path: .claude/agents/ai-ml/genai-architect.md
+    category: ai-ml
+    scope: optional
+    domains: [ai-llm]
+  - name: ai-prompt-specialist
+    path: .claude/agents/ai-ml/ai-prompt-specialist.md
+    category: ai-ml
+    scope: optional
+    domains: [ai-llm]
+  - name: ai-data-engineer
+    path: .claude/agents/ai-ml/ai-data-engineer.md
+    category: ai-ml
+    scope: optional
+    domains: [ai-llm, data-pipeline]
+
+  # --- AWS ---
+  - name: aws-lambda-architect
+    path: .claude/agents/aws/aws-lambda-architect.md
+    category: aws
+    scope: optional
+    clouds: [aws]
+    stacks: [aws-lambda, sam]
+  - name: lambda-builder
+    path: .claude/agents/aws/lambda-builder.md
+    category: aws
+    scope: optional
+    clouds: [aws]
+    stacks: [aws-lambda, python]
+  - name: aws-deployer
+    path: .claude/agents/aws/aws-deployer.md
+    category: aws
+    scope: optional
+    clouds: [aws]
+    stacks: [aws-cli, sam]
+  - name: ci-cd-specialist
+    path: .claude/agents/aws/ci-cd-specialist.md
+    category: aws
+    scope: optional
+    domains: [infra-devops]
+    clouds: [aws, azure, databricks]
+    stacks: [terraform, azure-devops]
+
+  # --- Engenharia de dados (Spark / Databricks) ---
+  - name: medallion-architect
+    path: .claude/agents/data-engineering/medallion-architect.md
+    category: data-engineering
+    scope: optional
+    domains: [data-pipeline]
+    stacks: [databricks, delta-lake]
+  - name: lakeflow-architect
+    path: .claude/agents/data-engineering/lakeflow-architect.md
+    category: data-engineering
+    scope: optional
+    domains: [data-pipeline]
+    clouds: [databricks]
+    stacks: [databricks, dlt]
+  - name: lakeflow-expert
+    path: .claude/agents/data-engineering/lakeflow-expert.md
+    category: data-engineering
+    scope: optional
+    domains: [data-pipeline]
+    clouds: [databricks]
+    stacks: [databricks, dlt]
+  - name: lakeflow-pipeline-builder
+    path: .claude/agents/data-engineering/lakeflow-pipeline-builder.md
+    category: data-engineering
+    scope: optional
+    domains: [data-pipeline]
+    clouds: [databricks]
+    stacks: [databricks, dlt]
+  - name: spark-specialist
+    path: .claude/agents/data-engineering/spark-specialist.md
+    category: data-engineering
+    scope: optional
+    domains: [data-pipeline]
+    stacks: [spark, pyspark]
+  - name: spark-performance-analyzer
+    path: .claude/agents/data-engineering/spark-performance-analyzer.md
+    category: data-engineering
+    scope: optional
+    domains: [data-pipeline]
+    stacks: [spark, pyspark]
+  - name: spark-streaming-architect
+    path: .claude/agents/data-engineering/spark-streaming-architect.md
+    category: data-engineering
+    scope: optional
+    domains: [data-pipeline]
+    stacks: [spark, kafka]
+  - name: spark-troubleshooter
+    path: .claude/agents/data-engineering/spark-troubleshooter.md
+    category: data-engineering
+    scope: optional
+    domains: [data-pipeline]
+    stacks: [spark, pyspark]
+
+# =============================================================================
+# COMANDOS — todos core (o framework é o mesmo em todo projeto)
+# =============================================================================
+
+commands:
+  - { name: project-init,  path: .claude/commands/core/project-init.md,    scope: core }
+  - { name: sync-context,  path: .claude/commands/core/sync-context.md,    scope: core }
+  - { name: memory,        path: .claude/commands/core/memory.md,          scope: core }
+  - { name: readme-maker,  path: .claude/commands/core/readme-maker.md,    scope: core }
+  - { name: telemetry,     path: .claude/commands/core/telemetry.md,       scope: core }
+  - { name: brainstorm,    path: .claude/commands/workflow/brainstorm.md,  scope: core }
+  - { name: define,        path: .claude/commands/workflow/define.md,      scope: core }
+  - { name: design,        path: .claude/commands/workflow/design.md,      scope: core }
+  - { name: build,         path: .claude/commands/workflow/build.md,       scope: core }
+  - { name: ship,          path: .claude/commands/workflow/ship.md,        scope: core }
+  - { name: iterate,       path: .claude/commands/workflow/iterate.md,     scope: core }
+  - { name: create-pr,     path: .claude/commands/workflow/create-pr.md,   scope: core }
+  - { name: create-kb,     path: .claude/commands/knowledge/create-kb.md,  scope: core }
+  - { name: review,        path: .claude/commands/review/review.md,        scope: core }
+  - { name: dev,           path: .claude/commands/dev/dev.md,              scope: core }
+  # new-project é exclusivo do template — nunca copiado para filhos
+  - { name: new-project,   path: .claude/commands/core/new-project.md,     scope: template-only }
+
+# =============================================================================
+# KBs CENTRAIS — acervo reaproveitável, cresce a cada /new-project
+# Entradas adicionadas automaticamente quando uma KB é criada no template.
+# Caminho: .claude/kb/{name}/ (registrada também em .claude/kb/_index.yaml)
+# =============================================================================
+
+kbs: []
+# Exemplo de entrada:
+#   - name: pyspark
+#     path: .claude/kb/pyspark/
+#     stacks: [spark, pyspark, python]
+#     domains: [data-pipeline]
+#     last_validated: "2026-06-10"
+#     library_version: "3.5"

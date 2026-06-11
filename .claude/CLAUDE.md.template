@@ -1,0 +1,123 @@
+# [PROJECT NAME]
+
+> [One-line description of the project]
+
+---
+
+## Contexto do Projeto
+
+**Problema:** [Descreva o problema sendo resolvido]
+
+**Solução:** [Descreva a solução técnica]
+
+**Stack:** [Principais tecnologias usadas]
+
+**Equipe:** [Tamanho da equipe / stakeholders]
+
+---
+
+## Visão Geral da Arquitetura
+
+[Execute /sync-context após adicionar arquivos-fonte para gerar esta seção automaticamente]
+
+---
+
+## Estrutura do Projeto
+
+```text
+[project-root]/
+├── src/           # Código-fonte
+├── tests/         # Suítes de teste
+└── ...
+```
+
+---
+
+## Workflows de Desenvolvimento
+
+### AgentSpec 4.2 (Spec-Driven Development)
+
+```text
+/brainstorm → /define → /design → /build → /ship
+  (Opus)      (Opus)    (Opus)   (Sonnet)  (Haiku)
+```
+
+| Comando | Fase | Propósito |
+|---------|------|-----------|
+| `/brainstorm` | 0 | Explorar ideias (opcional) |
+| `/define` | 1 | Capturar e validar requisitos |
+| `/design` | 2 | Criar arquitetura e especificação |
+| `/build` | 3 | Executar implementação |
+| `/ship` | 4 | Arquivar com lições aprendidas |
+| `/iterate` | Qualquer | Atualizar documentos mid-stream |
+
+**Artefatos:** `.claude/sdd/features/` e `.claude/sdd/archive/`
+
+### Dev Loop (Nível 2 Agentico)
+
+```bash
+/dev "Quero construir X"              # O crafter te guia
+/dev tasks/PROMPT_FEATURE.md          # Executa PROMPT existente
+/dev tasks/PROMPT_FEATURE.md --resume # Retoma sessão interrompida
+```
+
+**Quando usar:** KBs, protótipos, features isoladas, utilitários
+
+---
+
+## Diretrizes de Uso de Agentes
+
+| Categoria | Agentes | Quando usar |
+|-----------|---------|-------------|
+| **Workflow** | brainstorm, define, design, build, ship, iterate | Construir features com SDD |
+| **Qualidade** | [agentes de qualidade copiados] | Revisar e melhorar código |
+| **Exploração** | codebase-explorer, kb-architect | Explorar repositório, criar KBs |
+| **Comunicação** | adaptive-explainer, meeting-analyst, the-planner | Explicações, planejamento |
+| **Domínio** | [agentes de domínio criados pelo /new-project ou /project-init] | Tarefas específicas do projeto |
+
+---
+
+## Padrões de Código
+
+### Linguagem: [ex.: Python 3.11+]
+
+- **Style:** [ex.: Ruff / ESLint]
+- **Testes:** [ex.: pytest / jest]
+- **Validação:** [ex.: Pydantic v2 / Zod]
+- **Type Hints:** Obrigatórios em todas as assinaturas de função
+
+---
+
+## Knowledge Base
+
+| Domínio | Propósito | Ponto de entrada |
+|---------|-----------|-----------------|
+| [domain] | [propósito] | `.claude/kb/[domain]/index.md` |
+
+Adicione domínios a qualquer momento com `/create-kb "<dominio>"`.
+
+---
+
+## Features Ativas (Em Progresso)
+
+| Feature | Status | Descrição |
+|---------|--------|-----------|
+| — | — | — |
+
+---
+
+## Features Entregues (Arquivo SDD)
+
+| Feature | Entregue em | Descrição |
+|---------|-------------|-----------|
+| — | — | — |
+
+---
+
+## Ajuda
+
+- **Workflow SDD:** [.claude/sdd/_index.md](.claude/sdd/_index.md)
+- **Exemplos SDD:** [.claude/sdd/examples/](.claude/sdd/examples/)
+- **Dev Loop:** [.claude/dev/_index.md](.claude/dev/_index.md)
+- **Agentes:** [.claude/agents/](.claude/agents/)
+- **KB Index:** [.claude/kb/_index.yaml](.claude/kb/_index.yaml)

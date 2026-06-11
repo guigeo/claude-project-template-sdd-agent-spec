@@ -26,13 +26,29 @@
 │   └── dev/                # /dev
 ├── sdd/                    # Framework SDD: templates, exemplos, contratos
 ├── dev/                    # Dev Loop: templates de PROMPT
-└── kb/                     # Knowledge Base: templates (KB vazia — populada por /project-init)
-setup.sh                    # Script de criação de novo projeto
+└── kb/                     # Knowledge Base: acervo central reaproveitável + templates
+catalog.yaml                # Catálogo de componentes (metadados para cópia seletiva)
+setup.sh                    # Fallback de criação de projeto (copia tudo)
 ```
 
 ---
 
 ## Criar um novo projeto
+
+### Opção A — `/new-project` (recomendado: cópia seletiva)
+
+Abra **este repositório** no Claude Code e rode:
+
+```bash
+/new-project meu-projeto /Users/joao/Projetos
+```
+
+O comando faz a entrevista de 6 perguntas **antes** de copiar e então:
+- Seleciona via [catalog.yaml](catalog.yaml) só os agentes que casam com seu stack (um projeto Next.js não recebe os agentes Spark/AWS)
+- Copia as KBs do acervo central que se aplicam; se faltar alguma, propõe criar — a KB nova fica **no template** e é reaproveitada nos próximos projetos
+- Cria os agentes de domínio do projeto, preenche o `CLAUDE.md` e grava o vínculo de versão em `.claude/template.yaml`
+
+### Opção B — `setup.sh` (fallback: copia tudo)
 
 ```bash
 ./setup.sh <nome-do-projeto> [diretorio-destino]
@@ -42,30 +58,13 @@ setup.sh                    # Script de criação de novo projeto
 ./setup.sh meu-saas /Users/joao/Projetos
 ```
 
----
+Depois, dentro do projeto criado, rode `/project-init` — entrevista de 6 perguntas que instala KBs (localmente), cria agentes de domínio e preenche o `CLAUDE.md`.
 
-## Primeiros passos após criar o projeto
-
-```bash
-# 1. Abra no Claude Code
-code /caminho/do/projeto
-
-# 2. Primeiro comando — configura tudo antes da primeira feature
-/project-init
-```
-
-O `/project-init` faz uma entrevista de 6 perguntas e então:
-- Instala KBs para cada lib/framework do stack declarado
-- Cria agentes de domínio específicos do projeto
-- Preenche o `CLAUDE.md` com contexto real
-- Commita tudo automaticamente
+### Em ambos os casos, na sequência
 
 ```bash
-# 3. Após adicionar código-fonte
-/sync-context      # gera a seção de Arquitetura no CLAUDE.md
-
-# 4. Primeira feature
-/brainstorm "..."  # explore a ideia
+/sync-context      # gera a seção de Arquitetura após adicionar código-fonte
+/brainstorm "..."  # explore a ideia da primeira feature
 /define "..."      # ou vá direto para requisitos
 ```
 
@@ -138,7 +137,8 @@ claude mcp list
 
 | Comando | Propósito |
 |---------|-----------|
-| `/project-init` | **Primeiro comando** — KBs + agentes de domínio + CLAUDE.md |
+| `/new-project` | **No template** — entrevista + cópia seletiva via catalog.yaml |
+| `/project-init` | **No projeto filho** (se criado via setup.sh) — KBs + agentes de domínio + CLAUDE.md |
 | `/brainstorm` | Explorar ideias em diálogo |
 | `/define` | Capturar e validar requisitos |
 | `/design` | Criar arquitetura técnica |
