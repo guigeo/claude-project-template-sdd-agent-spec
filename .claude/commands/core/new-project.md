@@ -104,7 +104,11 @@ propaga para todos os projetos futuros.
 
 ### Passo 5: Criar KBs faltantes no acervo (template)
 
-Para cada lacuna confirmada, invocar o agente **kb-architect**:
+Para cada lacuna confirmada, invocar o agente **kb-architect** — **uma KB por vez,
+NUNCA em paralelo**: disparar várias instâncias simultâneas estoura o limite de sessão
+do plano (aconteceu na primeira execução: de 6 agentes paralelos, só 1 concluiu).
+Se um agente falhar por limite de sessão, criar a KB inline (sem subagente), seguindo
+os templates de `.claude/kb/_templates/` e os limites de tamanho do `_index.yaml`.
 
 ```text
 Tarefa: "Criar domínio KB para '{kb}' — conhecimento geral da tecnologia,
