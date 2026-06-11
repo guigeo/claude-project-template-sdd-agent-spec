@@ -1,0 +1,30 @@
+# Domain manifest — pyspark
+# NOTE: registration is done centrally. Copy the block below into
+# .claude/kb/_index.yaml under 'domains:'. Do not edit _index.yaml here.
+#
+# validated: 2026-06-10 (model knowledge, cutoff 2026-01; APIs stable across 3.5/4.x)
+# library_version: Apache Spark 3.5+ / 4.0 (DataFrame API)
+
+pyspark:
+  name: PySpark
+  description: >-
+    General PySpark DataFrame API knowledge: lazy evaluation, transformations
+    vs actions, joins and join strategies, partitioning, native functions vs
+    UDFs, and reading/writing CSV, Excel, Parquet and Delta. Project-agnostic
+    and reusable across projects.
+  path: pyspark/
+  entry_points:
+    index: index.md
+    quick_reference: quick-reference.md
+  concepts:
+    - name: lazy-evaluation-and-actions
+      path: concepts/lazy-evaluation-and-actions.md
+      confidence: 0.95
+    - name: joins-and-strategies
+      path: concepts/joins-and-strategies.md
+      confidence: 0.95
+  patterns:
+    - name: reading-writing-files
+      path: patterns/reading-writing-files.md
+    - name: performance-essentials
+      path: patterns/performance-essentials.md

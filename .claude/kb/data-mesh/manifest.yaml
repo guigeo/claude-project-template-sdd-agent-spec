@@ -1,0 +1,27 @@
+# Domain manifest — data-mesh
+# NOTE: registration is done centrally. Copy the block below into
+# .claude/kb/_index.yaml under 'domains:'. Do not edit _index.yaml here.
+#
+# validated: 2026-06-10 (domínio conceitual)
+# library_version: n/a (conceitual)
+
+data-mesh:
+  name: Data Mesh
+  description: >-
+    Conhecimento geral de data mesh: os 4 princípios, data products e seus
+    contratos, aplicação pragmática em escala pequena e a relação com
+    lakehouse/arquitetura medalhão. Agnóstico de projeto — reaproveitável.
+  path: data-mesh/
+  entry_points:
+    index: index.md
+    quick_reference: quick-reference.md
+  concepts:
+    - name: os-quatro-principios
+      path: concepts/os-quatro-principios.md
+      confidence: 0.95
+    - name: mesh-pragmatico-escala-pequena
+      path: concepts/mesh-pragmatico-escala-pequena.md
+      confidence: 0.90
+  patterns:
+    - name: data-product-e-contrato
+      path: patterns/data-product-e-contrato.md
