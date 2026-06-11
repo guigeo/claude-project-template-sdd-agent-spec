@@ -1,6 +1,6 @@
 # Claude Project Template — AgentSpec 4.2
 
-> Template de projeto com o framework AgentSpec 4.2 (Spec-Driven Development) pré-configurado para Claude Code. Clone, rode `setup.sh` e comece a codar.
+> Template de projeto com o framework AgentSpec 4.2 (Spec-Driven Development) pré-configurado para Claude Code. Abra no Claude Code, rode `/new-project` e comece a codar com KBs e agentes selecionados pelo seu stack.
 
 ---
 
@@ -17,7 +17,7 @@
 │   ├── dev/                # 2 agentes do Dev Loop
 │   ├── aws/                # 4 agentes AWS (opcional)
 │   ├── data-engineering/   # 8 agentes Spark/Databricks (opcional)
-│   └── domain/             # Vazio — criado pelo /project-init
+│   └── domain/             # Vazio — agentes do projeto criados por /new-project ou /project-init
 ├── commands/
 │   ├── core/               # /project-init, /sync-context, /memory, /readme-maker
 │   ├── workflow/           # /brainstorm, /define, /design, /build, /ship, /iterate
@@ -129,7 +129,9 @@ claude mcp list
 | **Exploração** | codebase-explorer, kb-architect | Explorar repositório, criar KBs |
 | **AWS** | aws-lambda-architect, lambda-builder, aws-deployer, ci-cd-specialist | Projetos serverless |
 | **Dados** | medallion-architect, lakeflow-architect, spark-specialist, ... | Pipelines Databricks/Spark |
-| **Domínio** | criados pelo `/project-init` | Específicos do seu projeto |
+| **Domínio** | criados por `/new-project` ou `/project-init` | Específicos do seu projeto |
+
+> Quais agentes vão para cada projeto é decidido por [catalog.yaml](catalog.yaml) (campos `scope`/`stacks`/`domains`/`clouds`). O `/new-project` copia só os que casam com o stack declarado na entrevista.
 
 ---
 
@@ -138,6 +140,7 @@ claude mcp list
 | Comando | Propósito |
 |---------|-----------|
 | `/new-project` | **No template** — entrevista + cópia seletiva via catalog.yaml |
+| `/contribute` | **No projeto filho** — devolve KB/agente reaproveitável ao acervo do template |
 | `/project-init` | **No projeto filho** (se criado via setup.sh) — KBs + agentes de domínio + CLAUDE.md |
 | `/brainstorm` | Explorar ideias em diálogo |
 | `/define` | Capturar e validar requisitos |

@@ -144,6 +144,7 @@ O `setup.sh` só age em projetos **novos**. Para projetos existentes, copiar man
 | Comando | Propósito |
 |---------|-----------|
 | `/new-project` | **Roda NO template** — entrevista, seleciona componentes via catalog.yaml e cria o projeto filho com cópia seletiva |
+| `/contribute` | **Roda NO filho** — devolve ao acervo do template KBs/agentes reaproveitáveis criados no projeto |
 | `/project-init` | **Primeiro comando em projetos criados sem /new-project** — instala KBs, cria agentes de domínio, preenche CLAUDE.md |
 | `/brainstorm` | Explorar ideias em diálogo colaborativo |
 | `/define` | Capturar e validar requisitos |
@@ -177,7 +178,7 @@ O template inclui apenas os templates de estrutura KB. KBs reais são criadas no
 |---------|--------|-----------|
 | `/project-init` | ✅ Concluído | Kickstart interativo com KBs + agentes + CLAUDE.md |
 | `/new-project` + catalog.yaml | ✅ Concluído | Cópia seletiva por stack; KBs reaproveitáveis acumulam no acervo central |
-| `/contribute` (write-back) | 🔜 Pendente | Enviar KB/agente reaproveitável criado num filho de volta ao acervo |
+| `/contribute` (write-back) | ✅ Concluído | Devolve KB/agente reaproveitável do filho ao acervo, deixando o contexto de negócio para trás |
 | `/template-update` | 🔜 Pendente | Sincronizar projetos existentes com updates do template (usa template-link.yaml) |
 
 ---
