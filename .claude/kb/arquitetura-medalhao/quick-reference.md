@@ -16,7 +16,7 @@
 |------|--------|
 | Converter string → date, normalizar encoding | Silver |
 | Deduplicar por chave natural | Silver |
-| Regra de negócio ("antena ativa = licença vigente") | Gold (ou Silver se for definição de entidade) |
+| Regra de negócio ("cliente ativo = assinatura vigente") | Gold (ou Silver se for definição de entidade) |
 | Junção com tabela de referência (UF, município) | Silver (conformação) |
 | KPI agregado por período/região | Gold |
 | Corrigir dado errado da origem | NUNCA editar Bronze — corrigir na Silver com regra explícita |

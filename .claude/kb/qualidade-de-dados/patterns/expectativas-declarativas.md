@@ -18,7 +18,7 @@ from pyspark.sql import functions as F
 
 @dp.table(name="silver_stations")
 @dp.expect_or_drop("chave_valida", "station_id IS NOT NULL")          # rejeitar
-@dp.expect("operadora_preenchida", "operator IS NOT NULL")            # alertar (passa + métrica)
+@dp.expect("responsavel_preenchido", "responsavel IS NOT NULL")      # alertar (passa + métrica)
 @dp.expect_or_fail("lote_integro", "_corrupt IS NULL")                # falhar pipeline
 def silver_stations():
     return (dp.read("bronze_stations")

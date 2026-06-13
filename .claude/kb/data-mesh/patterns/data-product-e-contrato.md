@@ -14,23 +14,23 @@
 ```text
 Contrato mínimo de um data product (documentar no catálogo):
 
-produto:        gold.cobertura.stations_by_city
+produto:        gold.vendas.pedidos_por_regiao
 dono:           {time/pessoa responsável}
-semântica:      antenas ativas por município; ativa = licença vigente na data de corte
-grão:           1 linha = município × mês
+semântica:      pedidos confirmados por região; confirmado = pagamento aprovado
+grão:           1 linha = região × mês
 schema:         estável; mudanças aditivas anunciadas, breaking = produto novo (v2)
 atualização:    mensal, até o dia 5 (SLA)
-qualidade:      unicidade da chave 100%; completude de município ≥ 99.9% (medida)
-linhagem:       silver.licenses ← bronze.anatel_licenses
+qualidade:      unicidade da chave 100%; completude de região ≥ 99.9% (medida)
+linhagem:       silver.pedidos ← bronze.pedidos_raw
 acesso:         leitura pública interna; escrita só pelo pipeline
 ```
 
 ```sql
 -- A versão executável do contrato vive no catálogo:
-COMMENT ON TABLE gold.stations_by_city IS
-'Antenas ativas por município/mês. Grão: município × mês. Dono: data-eng.
+COMMENT ON TABLE gold.pedidos_por_regiao IS
+'Pedidos confirmados por região/mês. Grão: região × mês. Dono: data-eng.
  SLA: mensal até dia 5. Breaking changes viram tabela _v2.';
-ALTER TABLE gold.stations_by_city SET TAGS ('domain' = 'cobertura', 'tier' = 'product');
+ALTER TABLE gold.pedidos_por_regiao SET TAGS ('domain' = 'vendas', 'tier' = 'product');
 ```
 
 ## Configuração

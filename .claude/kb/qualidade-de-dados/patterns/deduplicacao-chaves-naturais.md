@@ -15,7 +15,7 @@
 from pyspark.sql import functions as F, Window
 
 # 1. Declarar a chave natural — decisão de modelagem, documentada
-#    Ex.: estação física = (latitude, longitude, operadora) arredondadas,
+#    Ex.: ponto físico = (latitude, longitude, fonte) arredondadas,
 #    ou o código oficial da estação quando a fonte fornece.
 NATURAL_KEY = ["station_code"]
 

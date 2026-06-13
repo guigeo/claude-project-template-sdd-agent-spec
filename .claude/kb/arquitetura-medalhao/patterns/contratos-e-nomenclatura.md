@@ -47,7 +47,7 @@ Gold → consumidor garante: regra de negócio documentada, SLA de atualização
 
 ```sql
 COMMENT ON TABLE gold.kpi_coverage_monthly IS
-'Cobertura de antenas ativas por município/mês. Ativa = licença vigente na data de corte.
+'Clientes ativos por município/mês. Ativo = assinatura vigente na data de corte.
  Fonte: silver.stations. Atualização: mensal, dia 5.';
 ```
 
