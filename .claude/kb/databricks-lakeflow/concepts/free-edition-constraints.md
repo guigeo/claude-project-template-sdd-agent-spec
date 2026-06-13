@@ -61,6 +61,10 @@ Plan: 1 triggered pipeline (bronze→silver→gold in one DAG),
 scheduled by 1 job, ≤5 concurrent tasks, serverless compute
 ```
 
+### Ad-hoc serverless REPL is blocked
+
+Running arbitrary code against serverless via the REPL channel (e.g. an `execute_code`-style API call) is rejected (`Client-1 channel` error). Run one-off conversions or exploration as a **notebook or a pipeline** (the native runtime works on serverless) — not as an API REPL session. Pipeline code (Auto Loader, streaming tables) runs fine; only the interactive REPL path is restricted.
+
 ## Related
 
 - [unity-catalog-basics](../concepts/unity-catalog-basics.md)

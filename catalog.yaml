@@ -256,14 +256,14 @@ kbs:
     path: .claude/kb/delta-lake/
     stacks: [delta-lake, databricks, spark]
     domains: [data-pipeline]
-    last_validated: "2026-06-10"
+    last_validated: "2026-06-13"
     library_version: "Delta 3.x"
   - name: databricks-lakeflow
     path: .claude/kb/databricks-lakeflow/
     stacks: [databricks, dlt, spark]
     domains: [data-pipeline]
     clouds: [databricks]
-    last_validated: "2026-06-10"
+    last_validated: "2026-06-13"
     library_version: "Lakeflow SDP (ex-DLT), docs 2026-06"
   - name: arquitetura-medalhao
     path: .claude/kb/arquitetura-medalhao/

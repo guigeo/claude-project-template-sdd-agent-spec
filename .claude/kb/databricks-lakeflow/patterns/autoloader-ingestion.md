@@ -87,6 +87,24 @@ def orders_silver():
     )
 ```
 
+## Idempotency & Gotchas
+
+- **Exactly-once is keyed by file path.** Auto Loader tracks which paths it has already seen; reprocessing the *same* path is a no-op. This is what makes re-runs idempotent — and it dictates how you feed the stream.
+- **Feeding from an unsupported format → write one deterministically-named file per batch.** Auto Loader reads Parquet/JSON/CSV/Avro/XML, not proprietary formats (e.g. Excel). Convert at the driver (pandas) and write a *single, deterministic* filename per logical batch:
+
+  ```python
+  # GOOD: deterministic name → re-running overwrites the same path → no duplicates
+  pdf.to_parquet(f"{landing}/orders_{batch:%Y-%m}.parquet", index=False)
+
+  # BAD: Spark emits random part-*.parquet names every run → Auto Loader sees them
+  #      as new files → the same batch is ingested again → duplicates
+  spark.createDataFrame(pdf).write.parquet(f"{landing}/orders/")
+  ```
+
+  `spark.createDataFrame(pdf)` is fine for a *direct* table write, but not for staging files an Auto Loader stream will pick up.
+
+- **Schema inference is cached.** A first run with a wrong inferred schema *sticks* — automatic retries reuse the bad schema. Only a **full refresh** resets inference (and re-ingests everything the source still has). Fix the source/hints, then full refresh.
+
 ## See Also
 
 - [auto-cdc-scd](../patterns/auto-cdc-scd.md)
