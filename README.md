@@ -140,6 +140,7 @@ claude mcp list
 | Comando | Propósito |
 |---------|-----------|
 | `/new-project` | **No template** — entrevista + cópia seletiva via catalog.yaml |
+| `/distill` | **No projeto filho** — destila aprendizado de feature shipada em KB generalizada |
 | `/contribute` | **No projeto filho** — devolve KB/agente reaproveitável ao acervo do template |
 | `/project-init` | **No projeto filho** (se criado via setup.sh) — KBs + agentes de domínio + CLAUDE.md |
 | `/brainstorm` | Explorar ideias em diálogo |

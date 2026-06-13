@@ -167,9 +167,19 @@ Document lessons in these areas:
 
 ---
 
+## Próximo passo sugerido: /distill
+
+Se esta feature gerou **aprendizado técnico generalizável** (uma técnica, um limite
+descoberto, um pattern que funcionou), considere rodar `/distill {FEATURE}` para
+transformá-lo em KB reaproveitável — e depois `/contribute` para enviá-lo ao acervo
+do template. É assim que o conhecimento da feature deixa de morrer no projeto.
+
+---
+
 ## References
 
 - Agent: `.claude/agents/workflow/ship-agent.md`
 - Template: `.claude/sdd/templates/SHIPPED_TEMPLATE.md`
 - Contracts: `.claude/sdd/architecture/WORKFLOW_CONTRACTS.yaml`
 - Previous Phase: `.claude/commands/workflow/build.md`
+- Destilar aprendizado: `.claude/commands/core/distill.md`

@@ -235,8 +235,9 @@ commands:
   - { name: dev,           path: .claude/commands/dev/dev.md,              scope: core }
   # new-project é exclusivo do template — nunca copiado para filhos
   - { name: new-project,   path: .claude/commands/core/new-project.md,     scope: template-only }
-  # contribute roda no filho, mas precisa ser copiado para lá para existir no filho
+  # contribute e distill rodam no filho, então precisam ser copiados para lá
   - { name: contribute,    path: .claude/commands/core/contribute.md,      scope: core }
+  - { name: distill,       path: .claude/commands/core/distill.md,         scope: core }
 
 # =============================================================================
 # KBs CENTRAIS — acervo reaproveitável, cresce a cada /new-project
