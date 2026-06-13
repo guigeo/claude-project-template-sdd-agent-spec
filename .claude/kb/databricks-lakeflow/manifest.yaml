@@ -39,3 +39,5 @@ databricks-lakeflow:
       path: patterns/auto-cdc-scd.md
     - name: jobs-orchestration
       path: patterns/jobs-orchestration.md
+    - name: autoria-streaming-table
+      path: patterns/autoria-streaming-table.md

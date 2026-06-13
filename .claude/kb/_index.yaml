@@ -42,6 +42,7 @@ domains:
       - { name: reading-writing-files, path: patterns/reading-writing-files.md }
       - { name: performance-essentials, path: patterns/performance-essentials.md }
       - { name: casting-defensivo, path: patterns/casting-defensivo.md }
+      - { name: logica-pura-testavel, path: patterns/logica-pura-testavel.md }
 
   delta-lake:
     name: Delta Lake
@@ -69,6 +70,7 @@ domains:
       - { name: autoloader-ingestion, path: patterns/autoloader-ingestion.md }
       - { name: auto-cdc-scd, path: patterns/auto-cdc-scd.md }
       - { name: jobs-orchestration, path: patterns/jobs-orchestration.md }
+      - { name: autoria-streaming-table, path: patterns/autoria-streaming-table.md }
 
   arquitetura-medalhao:
     name: Arquitetura Medalhão

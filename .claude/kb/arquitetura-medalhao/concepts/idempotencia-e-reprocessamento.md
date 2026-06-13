@@ -35,15 +35,16 @@ padrão: MERGE por chave, overwrite de partição/escopo, e streaming com checkp
 | Incremental com updates | `MERGE` por chave natural |
 | Arquivos chegando continuamente | Auto Loader com checkpoint |
 | Append de eventos imutáveis | Append + dedup por id de evento na Silver |
+| Fonte **append-only de grão único** → Silver | **Streaming Table** row-wise stateless: idempotência e incrementalidade nativas, sem MERGE (o checkpoint controla o que já foi lido) |
 
 ## Erros comuns
 
 ### Errado
 
 ```python
-# Append cego de um snapshot mensal
-df.write.mode("append").saveAsTable("bronze.stations")
-# Re-rodou o job? Mês duplicado. Dado da Anatel atualizado? Linhas antigas e novas misturadas.
+# Append cego de um snapshot periódico
+df.write.mode("append").saveAsTable("bronze.entidades")
+# Re-rodou o job? Período duplicado. Fonte atualizada? Linhas antigas e novas misturadas.
 ```
 
 ### Correto

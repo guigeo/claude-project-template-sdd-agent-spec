@@ -31,7 +31,7 @@ df = df.withColumn("_coord_suspeita",
 | Decisão | Recomendação |
 |---------|--------------|
 | Ação na suspeita | Flag booleana, preservar a linha (ver `qualidade-de-dados`) |
-| Bbox | Min/max do território real; um bbox largo demais não pega nada |
+| Bbox | Min/max dos **extremos reais** do território (incl. ilhas/pontas) — um bbox curto demais gera falso-positivo em massa; largo demais não pega nada |
 | Nulos | Tratar como suspeita (sem coordenada = sem validação possível) |
 | Correção (geocoding) | Fora do escopo da validação; é outra etapa, opcional |
 

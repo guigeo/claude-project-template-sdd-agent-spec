@@ -30,3 +30,5 @@ pyspark:
       path: patterns/performance-essentials.md
     - name: casting-defensivo
       path: patterns/casting-defensivo.md
+    - name: logica-pura-testavel
+      path: patterns/logica-pura-testavel.md
