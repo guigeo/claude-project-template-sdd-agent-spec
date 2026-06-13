@@ -28,3 +28,5 @@ pyspark:
       path: patterns/reading-writing-files.md
     - name: performance-essentials
       path: patterns/performance-essentials.md
+    - name: casting-defensivo
+      path: patterns/casting-defensivo.md

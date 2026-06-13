@@ -279,3 +279,10 @@ kbs:
     stacks: [databricks]
     domains: [data-pipeline]
     last_validated: "2026-06-10"
+  - name: geoespacial-databricks
+    path: .claude/kb/geoespacial-databricks/
+    stacks: [databricks, spark, pyspark]
+    domains: [data-pipeline]
+    clouds: [databricks]
+    last_validated: "2026-06-13"
+    library_version: "Databricks SQL H3/ST_*, docs 2026"

@@ -36,7 +36,7 @@ Free Edition design checklist
 | Apps | Up to 3; auto-stop after 24h running |
 | Auth | Email OTP, Google, Microsoft sign-in; no SSO/SCIM |
 
-Unsupported entirely: R and Scala, custom workspace storage locations, online tables, clean rooms, Lakebase database instances, legacy (non-UC) features, compliance/security customization, private networking.
+Unsupported entirely: R and Scala, custom workspace storage locations, online tables, clean rooms, Lakebase database instances, legacy (non-UC) features, compliance/security customization, private networking. **Persisted `GEOMETRY`/`GEOGRAPHY` columns also fail** (`UNSUPPORTED_DATATYPE`) — for geo, persist `double` + H3 and use `ST_*` on-the-fly; see `geoespacial-databricks/`.
 
 Design implications:
 

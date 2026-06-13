@@ -1,0 +1,26 @@
+# Domain manifest — geoespacial-databricks
+# NOTE: registration is done centrally. Copy the block below into
+# .claude/kb/_index.yaml under 'domains:'. Do not edit _index.yaml here.
+#
+# validated: 2026-06-13 (destilado de uso real em projeto Databricks Free Edition)
+# library_version: Databricks SQL (H3 + ST_*), docs 2026
+
+geoespacial-databricks:
+  name: Geoespacial no Databricks
+  description: >-
+    Conhecimento geral de geoprocessamento no Databricks: indexação H3,
+    limites de tipos GEOMETRY/GEOGRAPHY (incl. Free Edition), e validação
+    de coordenadas por bounding box. Agnóstico de projeto — reaproveitável.
+  path: geoespacial-databricks/
+  entry_points:
+    index: index.md
+    quick_reference: quick-reference.md
+  concepts:
+    - name: tipos-e-limites-geoespaciais
+      path: concepts/tipos-e-limites-geoespaciais.md
+      confidence: 0.95
+  patterns:
+    - name: indexacao-h3
+      path: patterns/indexacao-h3.md
+    - name: validacao-coordenada-bbox
+      path: patterns/validacao-coordenada-bbox.md

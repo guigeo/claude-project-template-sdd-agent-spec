@@ -19,6 +19,7 @@
 | [concepts/joins-and-strategies.md](concepts/joins-and-strategies.md) | Join types, broadcast vs shuffle, skew |
 | [patterns/reading-writing-files.md](patterns/reading-writing-files.md) | CSV/Excel/Parquet/Delta IO with schemas |
 | [patterns/performance-essentials.md](patterns/performance-essentials.md) | Partitioning, native functions vs UDF, AQE |
+| [patterns/casting-defensivo.md](patterns/casting-defensivo.md) | Texto sujo → tipos: vírgula decimal, zero à esquerda, multivalor→array |
 
 ## Related domains
 

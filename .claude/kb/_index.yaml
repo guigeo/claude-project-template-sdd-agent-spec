@@ -41,6 +41,7 @@ domains:
     patterns:
       - { name: reading-writing-files, path: patterns/reading-writing-files.md }
       - { name: performance-essentials, path: patterns/performance-essentials.md }
+      - { name: casting-defensivo, path: patterns/casting-defensivo.md }
 
   delta-lake:
     name: Delta Lake
@@ -103,3 +104,14 @@ domains:
       - { name: mesh-pragmatico-escala-pequena, path: concepts/mesh-pragmatico-escala-pequena.md, confidence: 0.90 }
     patterns:
       - { name: data-product-e-contrato, path: patterns/data-product-e-contrato.md }
+
+  geoespacial-databricks:
+    name: Geoespacial no Databricks
+    description: Indexação H3, limites de tipos GEOMETRY/GEOGRAPHY (incl. Free Edition), validação de coordenadas por bounding box
+    path: geoespacial-databricks/
+    entry_points: { index: index.md, quick_reference: quick-reference.md }
+    concepts:
+      - { name: tipos-e-limites-geoespaciais, path: concepts/tipos-e-limites-geoespaciais.md, confidence: 0.95 }
+    patterns:
+      - { name: indexacao-h3, path: patterns/indexacao-h3.md }
+      - { name: validacao-coordenada-bbox, path: patterns/validacao-coordenada-bbox.md }
