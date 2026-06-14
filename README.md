@@ -20,7 +20,7 @@
 │   └── domain/             # Vazio — agentes do projeto criados por /new-project ou /project-init
 ├── commands/               # Slash commands na raiz (invocação por nome pelado: /brainstorm, /distill…)
 │   ├── brainstorm.md, define.md, design.md, build.md, ship.md, iterate.md   # workflow SDD
-│   ├── new-project.md, project-init.md, contribute.md, distill.md           # ciclo template↔filho
+│   ├── new-project.md, adopt.md, project-init.md, contribute.md, distill.md  # ciclo template↔filho
 │   ├── create-kb.md, review.md, create-pr.md, dev.md                        # KB, review, dev loop
 │   └── sync-context.md, memory.md, readme-maker.md, telemetry.md            # utilitários
 ├── sdd/                    # Framework SDD: templates, exemplos, contratos
@@ -138,7 +138,8 @@ claude mcp list
 
 | Comando | Propósito |
 |---------|-----------|
-| `/new-project` | **No template** — entrevista + cópia seletiva via catalog.yaml |
+| `/new-project` | **No template** — entrevista + cópia seletiva via catalog.yaml (greenfield) |
+| `/adopt` | **No template** — adota projeto existente (brownfield): detecta stack, entende, copia aditivo, vira filho |
 | `/distill` | **No projeto filho** — destila aprendizado de feature shipada em KB generalizada |
 | `/contribute` | **No projeto filho** — devolve KB/agente reaproveitável ao acervo do template |
 | `/project-init` | **No projeto filho** (se criado via setup.sh) — KBs + agentes de domínio + CLAUDE.md |

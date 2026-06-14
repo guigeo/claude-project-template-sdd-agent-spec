@@ -3,8 +3,11 @@
 #
 # Regras de seleção:
 #   - scope: core     → copiado para TODO projeto, sem exceção
-#   - scope: optional → copiado quando houver interseção entre os metadados
-#                       (stacks / domains / clouds) e as respostas da entrevista
+#   - scope: optional → copiado SÓ se TODAS as dimensões que o componente DECLARA casarem
+#                       (AND entre dimensões, não OR achatado): para cada dimensão presente
+#                       (stacks / domains / clouds) tem que haver interseção com a entrevista;
+#                       dimensão ausente = curinga. Ex.: clouds:[aws]+stacks:[python] NÃO entra
+#                       em cloud=local só porque "python" casou.
 #   - scope: project  → nunca vive no template; criado dentro do projeto filho
 #                       (ex.: {projeto}-expert, KBs de regra de negócio)
 #
@@ -233,8 +236,9 @@ commands:
   - { name: create-kb,     path: .claude/commands/create-kb.md,  scope: core }
   - { name: review,        path: .claude/commands/review.md,        scope: core }
   - { name: dev,           path: .claude/commands/dev.md,              scope: core }
-  # new-project é exclusivo do template — nunca copiado para filhos
+  # new-project e adopt são exclusivos do template — nunca copiados para filhos
   - { name: new-project,   path: .claude/commands/new-project.md,     scope: template-only }
+  - { name: adopt,         path: .claude/commands/adopt.md,           scope: template-only }
   # contribute e distill rodam no filho, então precisam ser copiados para lá
   - { name: contribute,    path: .claude/commands/contribute.md,      scope: core }
   - { name: distill,       path: .claude/commands/distill.md,         scope: core }

@@ -35,7 +35,7 @@
 │   │   └── domain/                  # Vazio — criado por /project-init nos projetos filhos
 │   ├── commands/                    # Slash commands na raiz — invocados por nome pelado (/brainstorm, /distill)
 │   │   ├── brainstorm.md … ship.md  # workflow SDD (6)
-│   │   ├── new-project.md, project-init.md, contribute.md, distill.md  # ciclo template↔filho
+│   │   ├── new-project.md, adopt.md, project-init.md, contribute.md, distill.md  # ciclo template↔filho
 │   │   └── create-kb.md, review.md, create-pr.md, dev.md, sync-context.md, memory.md, …  # KB/review/dev/utils
 │   ├── sdd/                         # Framework SDD: templates, exemplos, arquitetura
 │   ├── dev/                         # Dev Loop: templates de PROMPT
@@ -141,7 +141,8 @@ O `setup.sh` só age em projetos **novos**. Para projetos existentes, copiar man
 
 | Comando | Propósito |
 |---------|-----------|
-| `/new-project` | **Roda NO template** — entrevista, seleciona componentes via catalog.yaml e cria o projeto filho com cópia seletiva |
+| `/new-project` | **Roda NO template** — entrevista, seleciona componentes via catalog.yaml e cria o projeto filho com cópia seletiva (greenfield) |
+| `/adopt` | **Roda NO template** — adota projeto JÁ existente (brownfield): detecta stack do código, entende o projeto, instala `.claude/` de forma aditiva e grava o vínculo. Read-only no acervo |
 | `/distill` | **Roda NO filho** — destila o aprendizado técnico de uma feature shipada em KB generalizada (passo anterior ao /contribute) |
 | `/contribute` | **Roda NO filho** — devolve ao acervo do template KBs/agentes reaproveitáveis criados no projeto |
 | `/project-init` | **Primeiro comando em projetos criados sem /new-project** — instala KBs, cria agentes de domínio, preenche CLAUDE.md |
@@ -179,6 +180,7 @@ O template inclui apenas os templates de estrutura KB. KBs reais são criadas no
 | `/new-project` + catalog.yaml | ✅ Concluído | Cópia seletiva por stack; KBs reaproveitáveis acumulam no acervo central |
 | `/contribute` (write-back) | ✅ Concluído | Devolve KB/agente reaproveitável do filho ao acervo, deixando o contexto de negócio para trás |
 | `/distill` (feature→KB) | ✅ Concluído | Destila aprendizado de feature shipada em KB generalizada; fecha o elo `feature → /distill → /contribute` |
+| `/adopt` (brownfield) | ✅ Concluído | Adota projeto existente: detecta stack, entende (codebase-explorer), copia aditivo, vira filho. v1 enxuto (adotar+entender); read-only no acervo |
 | `/template-update` | 🔜 Pendente | Sincronizar projetos existentes com updates do template (usa template-link.yaml) |
 
 ---

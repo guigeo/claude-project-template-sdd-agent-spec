@@ -39,8 +39,9 @@ if [ -f "$TARGET_DIR/.claude/CLAUDE.md.template" ]; then
   mv "$TARGET_DIR/.claude/CLAUDE.md.template" "$TARGET_DIR/.claude/CLAUDE.md"
 fi
 
-# /new-project e exclusivo do template
+# /new-project e /adopt sao exclusivos do template
 rm -f "$TARGET_DIR/.claude/commands/new-project.md"
+rm -f "$TARGET_DIR/.claude/commands/adopt.md"
 
 # Cria .gitignore basico
 cat > "$TARGET_DIR/.gitignore" << 'EOF'

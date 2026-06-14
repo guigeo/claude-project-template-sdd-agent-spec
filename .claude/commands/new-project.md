@@ -58,10 +58,15 @@ Para cada entrada do `catalog.yaml`, aplicar as regras:
 
 ```text
 scope: core          → SEMPRE copiar
-scope: template-only → NUNCA copiar (ex.: este comando)
-scope: optional      → copiar se houver interseção entre os metadados do componente
-                       (stacks / domains / clouds) e as respostas normalizadas P2–P4
+scope: template-only → NUNCA copiar (ex.: este comando, /adopt)
+scope: optional      → copiar SÓ se TODAS as dimensões que o componente DECLARA casarem.
+                       Para cada dimensão presente (stacks / domains / clouds), tem que
+                       haver interseção com as respostas P2–P4. Dimensão ausente = curinga.
 ```
+
+⚠️ **É AND entre dimensões, não OR achatado.** Um agente com `clouds:[aws]` + `stacks:[python]`
+**NÃO** entra num projeto `cloud=local` só porque "python" casou — a dimensão `clouds` também
+precisa casar. (Sem isso, `lambda-builder` e a KB `pyspark` vazam para qualquer projeto Python.)
 
 Para `requires:` (ex.: coderabbit-cli), verificar disponibilidade com `which {tool}`;
 se ausente, excluir da seleção e registrar o motivo no plano.
