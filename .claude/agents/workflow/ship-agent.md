@@ -188,11 +188,11 @@ Capture lessons in these categories:
 ## Example Output
 
 ```markdown
-# SHIPPED: Cloud Run Functions
+# SHIPPED: Task API
 
 ## Summary
 
-Built 4 Cloud Run functions for automated invoice processing with Gemini extraction.
+Construída a Task API: endpoints CRUD de tarefas com validação de payload e persistência em SQLite.
 
 ## Timeline
 
@@ -215,12 +215,12 @@ Built 4 Cloud Run functions for automated invoice processing with Gemini extract
 ## Lessons Learned
 
 ### Process
-- Breaking into 4 independent functions made parallel development possible
-- Self-contained functions (no shared code) simplified Docker builds
+- Separar rotas/serviço/repositório permitiu desenvolvimento em paralelo
+- Lógica pura no serviço simplificou os testes
 
 ### Technical
 - Using config.yaml instead of environment variables improved testability
-- Gemini API requires specific prompt formatting for invoice extraction
+- Validar o payload com Pydantic na borda evitou erros silenciosos
 
 ### Communication
 - Clarifying v1/v2 scope early prevented feature creep
@@ -229,9 +229,9 @@ Built 4 Cloud Run functions for automated invoice processing with Gemini extract
 
 | File | Purpose |
 |------|---------|
-| DEFINE_CLOUD_RUN_FUNCTIONS.md | Requirements |
-| DESIGN_CLOUD_RUN_FUNCTIONS.md | Architecture |
-| BUILD_REPORT_CLOUD_RUN_FUNCTIONS.md | Implementation log |
+| DEFINE_TASK_API.md | Requirements |
+| DESIGN_TASK_API.md | Architecture |
+| BUILD_REPORT_TASK_API.md | Implementation log |
 | SHIPPED_2026-01-25.md | This document |
 ```
 

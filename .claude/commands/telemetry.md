@@ -97,7 +97,7 @@ TOP AGENTS
 ──────────
 @python-developer     5 features  100% success
 @test-generator       4 features  100% success
-@function-developer   3 features  100% success
+@api-developer        3 features  100% success
 
 RECOMMENDATIONS
 ───────────────

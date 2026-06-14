@@ -180,7 +180,7 @@ AgentSpec is part of a larger ecosystem designed to match task complexity with a
                            ┌─────────────────────────────────────┐
                            │         .claude/kb/                 │
                            │  ┌─────┬─────┬─────┬─────┬────┐    │
-                           │  │pydnt│ gcp │gemin│terra│... │    │
+                           │  │ kb1 │ kb2 │ kb3 │ kb4 │... │    │
                            │  └──┬──┴──┬──┴──┬──┴──┬──┴────┘    │
                            └─────┼─────┼─────┼─────┼────────────┘
                                  │     │     │     │
@@ -249,9 +249,9 @@ Traditional specs assume the AI knows where to put files. AgentSpec explicitly a
 
 | Aspect | Value | Notes |
 |--------|-------|-------|
-| **Deployment Location** | functions/ | Cloud Run serverless |
-| **KB Domains** | pydantic, gcp, gemini | LLM extraction patterns |
-| **IaC Impact** | New resources | Terraform for Cloud Run + Pub/Sub |
+| **Deployment Location** | src/ | Local/serverless |
+| **KB Domains** | ver .claude/kb/_index.yaml | Patterns do stack do projeto |
+| **IaC Impact** | New resources | Terraform/IaC changes needed |
 ```
 
 ### 2. Agent Matching (Design Phase)
@@ -262,11 +262,11 @@ Design dynamically discovers available agents and matches them to tasks:
 Step 1: Discover        Step 2: Index           Step 3: Match
 ──────────────────      ─────────────           ─────────────
 
-Glob(.claude/           agents:                 main.py → @function-developer
-  agents/**/*.md)         function-developer:   schema.py → @extraction-specialist
-       │                    keywords: [cloud    config.yaml → @infra-deployer
-       ▼                      run, serverless]  test_main.py → @test-generator
-40+ agent files              role: "Cloud Run
+Glob(.claude/           agents:                 routes.py → @api-developer
+  agents/**/*.md)         api-developer:        schema.py → @llm-specialist
+       │                    keywords: [api,     config.yaml → @infra-deployer
+       ▼                      handler, route]   test.py → @test-generator
+N agent files                role: "API/handler
                               developer"
 ```
 
@@ -283,8 +283,8 @@ Build invokes matched specialists via the Task tool:
 │                                                                  │
 │  File Manifest:                                                  │
 │  ┌────────────────────────────────────────────────────────┐     │
-│  │ main.py    │ @function-developer  │ Cloud Run pattern │     │
-│  │ schema.py  │ @extraction-specialist│ Pydantic + LLM   │     │
+│  │ routes.py  │ @api-developer  │ API handler patt. │     │
+│  │ schema.py  │ @llm-specialist│ Pydantic valid.   │     │
 │  │ test.py    │ @test-generator      │ pytest fixtures   │     │
 │  └────────────────────────────────────────────────────────┘     │
 │                          │                                       │
@@ -292,8 +292,8 @@ Build invokes matched specialists via the Task tool:
 │  ┌──────────────────────────────────────────────────────────┐   │
 │  │                   PARALLEL EXECUTION                      │   │
 │  │                                                           │   │
-│  │  Task(subagent: "function-developer", prompt: "...")     │   │
-│  │  Task(subagent: "extraction-specialist", prompt: "...")  │   │
+│  │  Task(subagent: "api-developer", prompt: "...")     │   │
+│  │  Task(subagent: "llm-specialist", prompt: "...")  │   │
 │  │  Task(subagent: "test-generator", prompt: "...")         │   │
 │  │                                                           │   │
 │  └──────────────────────────────────────────────────────────┘   │
@@ -302,8 +302,8 @@ Build invokes matched specialists via the Task tool:
 │  BUILD_REPORT:                                                   │
 │  ┌────────────────────────────────────────────────────────┐     │
 │  │ File         │ Agent                  │ Status │ Notes │     │
-│  │ main.py      │ @function-developer    │   ✅   │ ...   │     │
-│  │ schema.py    │ @extraction-specialist │   ✅   │ ...   │     │
+│  │ main.py      │ @api-developer    │   ✅   │ ...   │     │
+│  │ schema.py    │ @llm-specialist │   ✅   │ ...   │     │
 │  │ test.py      │ @test-generator        │   ✅   │ ...   │     │
 │  └────────────────────────────────────────────────────────┘     │
 │                                                                  │
@@ -373,9 +373,9 @@ AgentSpec leverages a rich ecosystem of 40+ specialized agents:
 | **Workflow** | brainstorm, define, design, build, ship, iterate | SDD phases |
 | **Code Quality** | code-reviewer, code-cleaner, test-generator, dual-reviewer | Quality assurance |
 | **Data Engineering** | spark-specialist, lakeflow-architect, medallion-architect | Data pipelines |
-| **AI/ML** | llm-specialist, extraction-specialist, genai-architect | LLM systems |
-| **Infrastructure** | ci-cd-specialist, infra-deployer, aws-lambda-architect | DevOps |
-| **Domain** | function-developer, pipeline-architect, dataops-builder | Project-specific |
+| **AI/ML** | llm-specialist, ai-prompt-specialist, genai-architect, ai-data-engineer | LLM systems |
+| **Infrastructure** | ci-cd-specialist, aws-deployer, aws-lambda-architect | DevOps |
+| **Domain** | criados por /new-project ou /project-init (ex.: {projeto}-expert) | Project-specific |
 
 ### Agent Structure
 
@@ -415,14 +415,10 @@ AgentSpec integrates deeply with the curated Knowledge Base:
 
 | Domain | Purpose | Entry Point |
 |--------|---------|-------------|
-| **pydantic** | Data validation, LLM output parsing | `.claude/kb/pydantic/` |
-| **gcp** | Cloud Run, Pub/Sub, GCS, BigQuery | `.claude/kb/gcp/` |
-| **gemini** | Document extraction, vision tasks | `.claude/kb/gemini/` |
-| **langfuse** | LLM observability | `.claude/kb/langfuse/` |
-| **terraform** | Infrastructure as Code | `.claude/kb/terraform/` |
-| **terragrunt** | Multi-environment orchestration | `.claude/kb/terragrunt/` |
-| **crewai** | Multi-agent orchestration | `.claude/kb/crewai/` |
-| **openrouter** | LLM fallback provider | `.claude/kb/openrouter/` |
+> Os domínios reais do acervo vivem em [`.claude/kb/_index.yaml`](../kb/_index.yaml) e crescem
+> a cada `/new-project` / `/create-kb`. Exemplos atuais do acervo: `pyspark`, `delta-lake`,
+> `databricks-lakeflow`, `arquitetura-medalhao`, `qualidade-de-dados`. Não hardcodar a lista
+> aqui (evita drift) — consultar sempre o `_index.yaml`.
 
 ### KB Flow
 
@@ -431,9 +427,9 @@ DEFINE                    DESIGN                    BUILD
 ──────                    ──────                    ─────
 
 KB Domains:          →    Read patterns:       →    Agents consult:
-• pydantic                • extraction-schema       • KB/pydantic/patterns/
-• gemini                  • invoice-extraction      • KB/gemini/patterns/
-• gcp                     • cloud-run-module        • KB/gcp/patterns/
+• {dominio-1}             • {pattern-1}             • KB/{dominio-1}/patterns/
+• {dominio-2}             • {pattern-2}             • KB/{dominio-2}/patterns/
+• {dominio-3}             • {pattern-3}             • KB/{dominio-3}/patterns/
 ```
 
 ---
@@ -470,8 +466,8 @@ KB Domains:          →    Read patterns:       →    Agents consult:
 
 | Aspect | Value | Notes |
 |--------|-------|-------|
-| **Deployment Location** | functions/ | Cloud Run serverless |
-| **KB Domains** | pydantic, gcp, gemini | Which patterns to consult |
+| **Deployment Location** | src/ | Local/serverless |
+| **KB Domains** | ver .claude/kb/_index.yaml | Which patterns to consult |
 | **IaC Impact** | New resources | Terraform changes needed |
 ```
 
@@ -482,16 +478,16 @@ KB Domains:          →    Read patterns:       →    Agents consult:
 
 | # | File | Action | Purpose | Agent | Dependencies |
 |---|------|--------|---------|-------|--------------|
-| 1 | main.py | Create | Handler | @function-developer | None |
-| 2 | schema.py | Create | Pydantic | @extraction-specialist | None |
+| 1 | main.py | Create | Handler | @api-developer | None |
+| 2 | schema.py | Create | Pydantic | @llm-specialist | None |
 | 3 | test.py | Create | Tests | @test-generator | 1, 2 |
 
 ## Agent Assignment Rationale
 
 | Agent | Files | Why This Agent |
 |-------|-------|----------------|
-| @function-developer | 1 | Cloud Run patterns from KB |
-| @extraction-specialist | 2 | Pydantic + LLM output validation |
+| @api-developer | 1 | API handler patterns from KB |
+| @llm-specialist | 2 | Pydantic valid. output validation |
 | @test-generator | 3 | pytest fixtures specialist |
 ```
 
@@ -502,8 +498,8 @@ KB Domains:          →    Read patterns:       →    Agents consult:
 
 | Agent | Files | Specialization Applied |
 |-------|-------|------------------------|
-| @function-developer | 2 | Cloud Run, Pub/Sub handlers |
-| @extraction-specialist | 2 | Pydantic models, LLM output |
+| @api-developer | 2 | API endpoints, request handlers |
+| @llm-specialist | 2 | Pydantic models, LLM output |
 | @test-generator | 2 | pytest, fixtures |
 | (direct) | 1 | DESIGN patterns only |
 ```
@@ -529,19 +525,19 @@ KB Domains:          →    Read patterns:       →    Agents consult:
 
 ```bash
 # Phase 0: Explore the idea (optional)
-/brainstorm "Build an invoice extraction system"
+/brainstorm "Build a task API"
 
 # Phase 1: Define requirements with Technical Context
-/define .claude/sdd/features/BRAINSTORM_INVOICE_EXTRACTION.md
+/define .claude/sdd/features/BRAINSTORM_TASK_API.md
 
 # Phase 2: Design with Agent Matching
-/design .claude/sdd/features/DEFINE_INVOICE_EXTRACTION.md
+/design .claude/sdd/features/DEFINE_TASK_API.md
 
 # Phase 3: Build with Agent Delegation
-/build .claude/sdd/features/DESIGN_INVOICE_EXTRACTION.md
+/build .claude/sdd/features/DESIGN_TASK_API.md
 
 # Phase 4: Archive
-/ship .claude/sdd/features/DEFINE_INVOICE_EXTRACTION.md
+/ship .claude/sdd/features/DEFINE_TASK_API.md
 ```
 
 ### Clear Requirements (Skip Brainstorm)

@@ -215,28 +215,28 @@ Each update adds to revision history:
 ```markdown
 ## Out of Scope
 
-- Multi-vendor support (UberEats only)
+- Multiusuário (single-user no MVP)
 ```
 
-**Change:** "Add support for DoorDash invoices"
+**Change:** "Add authentication and per-user tasks"
 
 **After:**
 ```markdown
 ## Out of Scope
 
-- ~~Multi-vendor support (UberEats only)~~ Removed in v1.1
-- Custom ML models (use Gemini API)
+- ~~Multiusuário (single-user no MVP)~~ Removido na v1.1
+- UI web (apenas API)
 
 ## Target Users
 
-... (updated to include DoorDash vendors)
+... (updated to include authenticated users)
 
 ## Revision History
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0 | 2026-01-25 | define-agent | Initial version |
-| 1.1 | 2026-01-25 | iterate-agent | Added DoorDash support, expanded scope |
+| 1.1 | 2026-01-25 | iterate-agent | Added authentication, expanded scope |
 ```
 
 ---

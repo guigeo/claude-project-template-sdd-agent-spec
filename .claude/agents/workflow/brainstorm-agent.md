@@ -53,7 +53,7 @@ Explore recent commits, existing code patterns, project structure
 
 **Observe for Define Phase:**
 - Project structure → Note likely deployment locations (src/, functions/, gen/, deploy/)
-- KB domains → Which patterns might be relevant (pydantic, gcp, gemini, etc.)
+- KB domains → Which patterns might be relevant (consulte .claude/kb/_index.yaml do projeto)
 - Existing infrastructure → Any Terraform/Terragrunt patterns to follow
 
 ### 2. Understand the Idea
@@ -108,8 +108,8 @@ Ask about available samples to improve LLM/AI accuracy:
 
 | Type | Location | Count | Notes |
 |------|----------|-------|-------|
-| Input | data/input/*.tiff | 30 | 6 per vendor, 800x1100 |
-| Schema | schemas/invoice.py | 1 | Pydantic model |
+| Input | requests de exemplo | 30 | payloads de tarefa |
+| Schema | src/schema.py | 1 | Pydantic model |
 | Ground truth | N/A | 0 | Generate during testing |
 ```
 
@@ -228,7 +228,7 @@ Fill the BRAINSTORM template with:
 ### Open-Ended (When Exploring)
 
 ```markdown
-"Tell me more about the current pain point with invoice processing."
+"Tell me more about the current pain point with managing tasks."
 ```
 
 ### Clarifying
@@ -259,34 +259,34 @@ Fill the BRAINSTORM template with:
 ## Example Output
 
 ```markdown
-# BRAINSTORM: Invoice Extraction Pipeline
+# BRAINSTORM: Task API
 
 ## Initial Idea
-Build a system to automatically extract data from invoices.
+Construir uma API para criar e listar tarefas, integrável com outras ferramentas.
 
 ## Discovery Questions & Answers
 
 | # | Question | Answer | Impact |
 |---|----------|--------|--------|
-| 1 | What format are the invoices? | TIFF images | Need OCR/Vision |
-| 2 | How many invoices per day? | ~100 | Batch OK, no real-time |
-| 3 | Which vendor first? | UberEats only | MVP scope limited |
+| 1 | Quais campos a tarefa tem? | título, status, prazo | Define o schema |
+| 2 | Precisa de autenticação? | Não no MVP | Single-user simplifica |
+| 3 | Onde persistir? | SQLite local | Sem infra de banco |
 
 ## Approaches Explored
 
-### Approach A: Cloud Run + Gemini ⭐ Recommended
-**Why:** Event-driven, serverless, Vision API built-in
+### Approach A: FastAPI + SQLite ⭐ Recommended
+**Why:** Simples, local, testável, sem infra externa
 
-### Approach B: Lambda + Textract
-**Why not:** Extra AWS setup, team more familiar with GCP
+### Approach B: Framework full-stack + ORM pesado
+**Why not:** Peso desnecessário para um CRUD pequeno
 
 ## Features Removed (YAGNI)
 
 | Feature | Reason | Later? |
 |---------|--------|--------|
-| Multi-vendor | MVP is UberEats only | Yes |
-| Real-time | Batch acceptable | Yes |
-| Custom ML | Gemini sufficient | Maybe |
+| Multiusuário | MVP é single-user | Yes |
+| UI web | Só API no MVP | Yes |
+| Filtros avançados | Listagem simples basta | Maybe |
 
 ## Status: ✅ Ready for Define
 ```

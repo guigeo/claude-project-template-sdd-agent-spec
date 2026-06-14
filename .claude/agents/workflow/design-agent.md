@@ -141,12 +141,12 @@ agents:
   python-developer:
     keywords: [python, code, parser, dataclass, type hints]
     role: "Python code architect"
-  extraction-specialist:
-    keywords: [extraction, llm, pydantic, gemini, prompt]
-    role: "LLM extraction expert"
-  function-developer:
-    keywords: [cloud run, serverless, pub/sub, handler]
-    role: "Cloud Run function developer"
+  llm-specialist:
+    keywords: [extraction, llm, pydantic, prompt, structured output]
+    role: "LLM/prompt expert"
+  api-developer:
+    keywords: [api, endpoint, route, handler, serverless]
+    role: "API/handler developer"
   test-generator:
     keywords: [test, pytest, fixture, coverage]
     role: "Test automation expert"
@@ -162,9 +162,9 @@ For each file in the manifest:
 | Match Criteria | Weight | Example |
 |----------------|--------|---------|
 | File type (.py, .yaml, .tf) | High | `.tf` → ci-cd-specialist |
-| Purpose keywords | High | "extraction" → extraction-specialist |
-| Path patterns | Medium | `functions/` → function-developer |
-| KB domains from DEFINE | Medium | gemini KB → extraction-specialist |
+| Purpose keywords | High | "extraction" → llm-specialist |
+| Path patterns | Medium | `routes/` → api-developer |
+| KB domains from DEFINE | Medium | llm KB → llm-specialist |
 | Fallback | Low | Any .py → python-developer |
 
 **Step 4: Assign with Rationale**
@@ -173,8 +173,8 @@ Update File Manifest to include Agent column:
 
 | # | File | Action | Purpose | Agent | Rationale |
 |---|------|--------|---------|-------|-----------|
-| 1 | `main.py` | Create | Handler | @function-developer | Cloud Run pattern |
-| 2 | `schema.py` | Create | Pydantic | @extraction-specialist | LLM output validation |
+| 1 | `main.py` | Create | Handler | @api-developer | API handler pattern |
+| 2 | `schema.py` | Create | Pydantic | @llm-specialist | LLM output validation |
 | 3 | `config.yaml` | Create | Config | @infra-deployer | IaC patterns |
 | 4 | `test_main.py` | Create | Tests | @test-generator | pytest specialist |
 
@@ -291,59 +291,58 @@ This prevents stale statuses that say "Ready for Design" after design is complet
 ## Example Output
 
 ```markdown
-# DESIGN: Cloud Run Functions
+# DESIGN: Task API
 
 ## Architecture Overview
 
 ┌─────────────────────────────────────────────────────┐
-│                 INVOICE PIPELINE                     │
+│                      TASK API                        │
 ├─────────────────────────────────────────────────────┤
-│  [GCS Upload] → [tiff-converter] → [classifier]    │
-│                       ↓                 ↓           │
-│               [data-extractor] → [bigquery-writer] │
-│                       ↓                             │
-│                  [Gemini API]                       │
+│  [HTTP Client] → [routes] → [service] → [repository] │
+│                                  ↓                   │
+│                            [SQLite store]            │
 └─────────────────────────────────────────────────────┘
 
-## Decision: Self-Contained Functions
+## Decision: Camadas separadas (routes / service / repository)
 
 | Attribute | Value |
 |-----------|-------|
 | **Status** | Accepted |
 | **Date** | 2026-01-25 |
 
-**Context:** Cloud Run functions need to be independently deployable
+**Context:** A API precisa ser testável sem subir banco real
 
-**Choice:** Each function contains all its dependencies
+**Choice:** Separar rota (HTTP), serviço (regra) e repositório (persistência)
 
-**Rationale:** Docker build context cannot access parent directories
+**Rationale:** Lógica pura no serviço fica testável; o repositório isola o SQLite
 
 **Alternatives Rejected:**
-1. Shared common/ folder - breaks Docker builds
-2. Published package - adds complexity
+1. Tudo na rota - mistura HTTP com regra, difícil de testar
+2. ORM pesado - complexidade desnecessária para o escopo
 
-**Consequences:** Some code duplication, but full independence
+**Consequences:** Mais alguns arquivos, mas camadas testáveis e trocáveis
 
 ## File Manifest
 
 | # | File | Action | Purpose | Dependencies |
 |---|------|--------|---------|--------------|
-| 1 | `functions/tiff-converter/main.py` | Create | HTTP handler | 2 |
-| 2 | `functions/tiff-converter/config.yaml` | Create | Configuration | None |
-| 3 | `functions/classifier/main.py` | Create | Classification handler | 4 |
-| 4 | `functions/classifier/config.yaml` | Create | Configuration | None |
+| 1 | `src/routes.py` | Create | Endpoints HTTP | 2 |
+| 2 | `src/service.py` | Create | Regra de negócio | 3 |
+| 3 | `src/repository.py` | Create | Persistência (SQLite) | None |
+| 4 | `tests/test_service.py` | Create | Testes da regra | 2 |
 
 ## Code Pattern: Handler
 
 \`\`\`python
-import functions_framework
-from config import load_config
+from fastapi import APIRouter
+from .service import create_task
 
-@functions_framework.http
-def handler(request):
-    config = load_config()
-    # Process request
-    return {"status": "ok"}
+router = APIRouter()
+
+@router.post("/tasks")
+def handler(payload: dict):
+    task = create_task(payload)
+    return {"status": "ok", "id": task.id}
 \`\`\`
 ```
 

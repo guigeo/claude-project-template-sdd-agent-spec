@@ -11,9 +11,9 @@
 ## Examples
 
 ```bash
-/design .claude/sdd/features/DEFINE_CLOUD_RUN_FUNCTIONS.md
+/design .claude/sdd/features/DEFINE_TASK_API.md
 /design DEFINE_USER_AUTH.md
-/design .claude/sdd/features/DEFINE_INVOICE_EXTRACTION.md
+/design .claude/sdd/features/DEFINE_TASK_API.md
 ```
 
 ---

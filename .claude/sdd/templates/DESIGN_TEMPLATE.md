@@ -92,7 +92,7 @@
 
 | Agent | Files Assigned | Why This Agent |
 |-------|----------------|----------------|
-| @{agent-1} | 1, 3 | {Specialization match: e.g., "Cloud Run patterns"} |
+| @{agent-1} | 1, 3 | {Specialization match: e.g., "API handler patterns"} |
 | @{agent-2} | 2 | {Specialization match: e.g., "Pydantic + LLM output"} |
 | @{agent-3} | 4 | {Specialization match: e.g., "pytest fixtures"} |
 | (general) | {if any} | {No specialist found - Build handles directly} |

@@ -11,7 +11,7 @@
 ## Examples
 
 ```bash
-/ship .claude/sdd/features/DEFINE_CLOUD_RUN_FUNCTIONS.md
+/ship .claude/sdd/features/DEFINE_TASK_API.md
 /ship DEFINE_USER_AUTH.md
 ```
 

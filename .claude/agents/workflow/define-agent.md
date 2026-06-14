@@ -92,7 +92,7 @@ Ask these 3 essential questions to prevent misaligned implementations:
 ```markdown
 "Where should this feature live in the project?
 (a) src/ - Main application code
-(b) functions/ - Cloud Run functions (serverless)
+(b) api/ - Endpoints/handlers (API/serverless)
 (c) gen/ - Code generation tools
 (d) deploy/ - Deployment scripts and IaC
 (e) Other - I'll specify the path"
@@ -101,21 +101,17 @@ Ask these 3 essential questions to prevent misaligned implementations:
 **Question 2: KB Domain Patterns**
 ```markdown
 "Which knowledge base domains should inform the design?
-(Select all that apply - reference .claude/kb/_index.yaml)
-[ ] pydantic - Data validation, LLM output parsing
-[ ] gcp - Cloud Run, Pub/Sub, GCS, BigQuery
-[ ] gemini - Document extraction, vision tasks
-[ ] langfuse - LLM observability
-[ ] terraform/terragrunt - Infrastructure as Code
-[ ] crewai - Multi-agent orchestration
-[ ] openrouter - LLM fallback provider
+(Select all that apply - reference .claude/kb/_index.yaml para a lista real do projeto)
+[ ] {dominio-1} - {ex.: validação de dados, padrões de API}
+[ ] {dominio-2} - {ex.: IaC / Terraform, observabilidade}
+[ ] {dominio-3} - {ex.: padrões do seu stack}
 [ ] None needed"
 ```
 
 **Question 3: Infrastructure Impact**
 ```markdown
 "Does this feature require infrastructure changes?
-(a) Yes - New GCP resources needed
+(a) Yes - New cloud/infra resources needed
 (b) Yes - Modify existing Terraform/Terragrunt
 (c) No - Uses existing infrastructure
 (d) Unsure - Analyze during Design phase"
@@ -215,54 +211,54 @@ This prevents stale "Ready for Define" statuses after /define completes.
 ## Example Output
 
 ```markdown
-# DEFINE: Cloud Run Functions
+# DEFINE: Task API
 
 ## Problem Statement
 
-Invoice processing is manual, taking 2+ hours per batch and prone to errors.
+Gerenciar tarefas hoje é manual (planilha/anotações), sem API para integrar com outras ferramentas.
 
 ## Target Users
 
 | User | Role | Pain Point |
 |------|------|------------|
-| Finance Team | Process invoices | Manual data entry is slow |
-| Management | Review reports | Delayed visibility into spending |
+| App cliente | Consumir a API | Sem endpoint para criar/listar tarefas |
+| Integrações | Automatizar fluxos | Dados de tarefa presos numa planilha |
 
 ## Goals
 
 | Priority | Goal |
 |----------|------|
-| **MUST** | Extract key invoice fields automatically |
-| **MUST** | Store extracted data in BigQuery |
-| **SHOULD** | Provide extraction confidence scores |
-| **COULD** | Email notification on completion |
+| **MUST** | Expor endpoints CRUD de tarefas |
+| **MUST** | Persistir tarefas (SQLite) |
+| **SHOULD** | Validar o payload na entrada |
+| **COULD** | Filtro por status na listagem |
 
 ## Success Criteria
 
-- [ ] Process 100 invoices in < 5 minutes
-- [ ] 90%+ extraction accuracy
-- [ ] Zero manual data entry required
+- [ ] Criar e listar tarefas via HTTP
+- [ ] 100% das entradas validadas
+- [ ] Cobertura de testes na camada de serviço
 
 ## Acceptance Tests
 
 | ID | Scenario | Given | When | Then |
 |----|----------|-------|------|------|
-| AT-001 | Happy path | Valid TIFF invoice | Processed | Data in BigQuery |
-| AT-002 | Bad image | Corrupted file | Processed | Error logged, no crash |
+| AT-001 | Happy path | Payload válido | POST /tasks | Tarefa criada, id retornado |
+| AT-002 | Payload inválido | Campo obrigatório faltando | POST /tasks | 422, sem crash |
 
 ## Out of Scope
 
-- Multi-vendor support (UberEats only for MVP)
-- Real-time processing (batch is acceptable)
-- Custom ML models (use Gemini API)
+- Autenticação/multiusuário (MVP é single-user)
+- UI web (apenas API)
+- Banco distribuído (SQLite local basta)
 
 ## Assumptions
 
 | ID | Assumption | If Wrong, Impact | Validated? |
 |----|------------|------------------|------------|
-| A-001 | Gemini API handles TIFF natively | Need image conversion | [ ] |
-| A-002 | Invoice volume < 100/day | Need batch optimization | [x] |
-| A-003 | All invoices in English | Need multi-language | [ ] |
+| A-001 | SQLite atende o volume do MVP | Trocar por Postgres | [ ] |
+| A-002 | < 100 tarefas/dia | Otimizar paginação | [x] |
+| A-003 | Single-user no MVP | Adicionar auth/multiusuário | [ ] |
 
 ## Clarity Score: 14/15
 ```

@@ -12,11 +12,11 @@
 
 ```bash
 # From a BRAINSTORM document (recommended after /brainstorm)
-/define .claude/sdd/features/BRAINSTORM_INVOICE_PROCESSING.md
+/define .claude/sdd/features/BRAINSTORM_TASK_API.md
 
 # From meeting notes or raw input
 /define notes/meeting-notes.md
-/define "Build Cloud Run functions for invoice processing"
+/define "Build a REST API for task management"
 /define docs/stakeholder-email.txt
 ```
 

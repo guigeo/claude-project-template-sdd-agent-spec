@@ -270,13 +270,13 @@ Exploring codebase...
 ✓ Detected: Python project (pyproject.toml)
 ✓ Found: 17 source files, 4 test files
 ✓ Framework: Click CLI, Pydantic
-✓ Entry point: src/invoice_gen/cli.py
+✓ Entry point: src/csv_tool/cli.py
 
 Extracting metadata...
-✓ Name: invoice-gen
+✓ Name: csv-tool
 ✓ Version: 0.1.0
 ✓ License: MIT
-✓ Dependencies: click, pydantic, faker
+✓ Dependencies: click, pydantic
 
 Generating README...
 ✓ Overview: from pyproject.toml description
@@ -293,14 +293,14 @@ Validating...
 Saved: README.md (comprehensive style)
 
 Preview:
-# invoice-gen
+# csv-tool
 
-> Generate synthetic invoices for testing ML extraction pipelines
+> Convert CSV files to JSON with schema validation
 
 ## Quick Start
 
 pip install -e .
-invoice-gen generate --count 10 --output invoices/
+csv-tool convert --input data.csv --output data.json
 ```
 
 ---

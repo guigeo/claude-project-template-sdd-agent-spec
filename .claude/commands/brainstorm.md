@@ -6,7 +6,7 @@
 
 ```bash
 /brainstorm <idea-or-request>
-/brainstorm "Build invoice extraction pipeline"
+/brainstorm "Build a task API"
 /brainstorm notes/rough-idea.txt
 ```
 
@@ -14,7 +14,7 @@
 
 ```bash
 # From a direct idea
-/brainstorm "I want to automate invoice processing"
+/brainstorm "I want to build a REST API for tasks"
 
 # From a file with notes
 /brainstorm docs/meeting-notes.md

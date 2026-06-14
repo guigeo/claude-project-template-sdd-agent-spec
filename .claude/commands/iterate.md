@@ -11,9 +11,9 @@
 ## Examples
 
 ```bash
-/iterate BRAINSTORM_CLOUD_RUN.md "Consider batch processing instead of real-time"
-/iterate DEFINE_CLOUD_RUN.md "Add support for PDF invoices, not just TIFF"
-/iterate DESIGN_CLOUD_RUN.md "Functions need to be self-contained, no shared common/"
+/iterate BRAINSTORM_TASK_API.md "Consider pagination on the list endpoint"
+/iterate DEFINE_TASK_API.md "Add a status filter to the listing"
+/iterate DESIGN_TASK_API.md "Separate service and repository layers"
 /iterate .claude/sdd/features/DEFINE_AUTH.md "Change from JWT to session-based auth"
 ```
 

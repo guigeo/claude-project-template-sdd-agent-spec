@@ -27,7 +27,7 @@
 | Aspect | Observation | Implication |
 |--------|-------------|-------------|
 | Likely Location | {src/ \| functions/ \| gen/ \| deploy/} | {Where code should live} |
-| Relevant KB Domains | {pydantic, gcp, gemini, etc.} | {Patterns to consult} |
+| Relevant KB Domains | {ver .claude/kb/_index.yaml do projeto} | {Patterns to consult} |
 | IaC Patterns | {Existing Terraform/Terragrunt or N/A} | {Infrastructure approach} |
 
 ---

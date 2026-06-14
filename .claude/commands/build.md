@@ -11,7 +11,7 @@
 ## Examples
 
 ```bash
-/build .claude/sdd/features/DESIGN_CLOUD_RUN_FUNCTIONS.md
+/build .claude/sdd/features/DESIGN_TASK_API.md
 /build DESIGN_USER_AUTH.md
 ```
 

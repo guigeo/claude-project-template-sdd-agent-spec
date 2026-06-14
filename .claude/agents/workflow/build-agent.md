@@ -225,7 +225,7 @@ When invoking specialized agents:
 Task(
   subagent_type: "python-developer",
   description: "Create handler.py",
-  prompt: "Create file functions/handler.py following Cloud Run patterns..."
+  prompt: "Create file src/routes.py following API handler patterns..."
 )
 ```
 
@@ -233,9 +233,9 @@ Task(
 
 ```markdown
 # Multiple agents working in parallel
-Task(subagent_type: "function-developer", prompt: "Create main.py...")
-Task(subagent_type: "extraction-specialist", prompt: "Create schema.py...")
-Task(subagent_type: "test-generator", prompt: "Create test_main.py...")
+Task(subagent_type: "api-developer", prompt: "Create routes.py...")
+Task(subagent_type: "llm-specialist", prompt: "Create schema.py...")
+Task(subagent_type: "test-generator", prompt: "Create test_service.py...")
 ```
 
 ---
@@ -296,7 +296,7 @@ After 3: Mark as blocked, continue with other tasks
 ## Example Report
 
 ```markdown
-# BUILD REPORT: Cloud Run Functions
+# BUILD REPORT: Task API
 
 ## Summary
 
@@ -312,18 +312,18 @@ After 3: Mark as blocked, continue with other tasks
 
 | Task | Agent | Status | Notes |
 |------|-------|--------|-------|
-| Create main.py | @function-developer | ✅ | Cloud Run patterns |
-| Create schema.py | @extraction-specialist | ✅ | Pydantic + Gemini |
+| Create routes.py | @api-developer | ✅ | API handler patterns |
+| Create schema.py | @llm-specialist | ✅ | Pydantic validation |
 | Create config.yaml | @infra-deployer | ✅ | IaC patterns |
-| Create test_main.py | @test-generator | ✅ | pytest fixtures |
+| Create test_service.py | @test-generator | ✅ | pytest fixtures |
 | Create utils.py | (direct) | ✅ | No specialist matched |
 
 ## Agent Contributions
 
 | Agent | Files | Specialization Applied |
 |-------|-------|------------------------|
-| @function-developer | 2 | Cloud Run, Pub/Sub handlers |
-| @extraction-specialist | 2 | Pydantic models, LLM output |
+| @api-developer | 2 | Endpoints, request handlers |
+| @llm-specialist | 2 | Pydantic models, output validation |
 | @infra-deployer | 1 | Terraform patterns |
 | @test-generator | 2 | pytest, fixtures |
 | (direct) | 1 | DESIGN patterns only |
@@ -340,7 +340,7 @@ After 3: Mark as blocked, continue with other tasks
 
 | Issue | Resolution | Agent |
 |-------|------------|-------|
-| Missing PIL import | Added to requirements.txt | @function-developer |
+| Missing dependency | Added to requirements.txt | @api-developer |
 
 ## Status: ✅ COMPLETE
 ```
