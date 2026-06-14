@@ -59,7 +59,9 @@ para desambiguar.
 
 ### Passo 3: Entender o projeto (relatório de entendimento)
 
-Invocar o **codebase-explorer** para produzir um entendimento do projeto:
+Produzir um entendimento do projeto. **Regra de custo:** projeto **pequeno** (poucos arquivos)
+→ ler o código inline (mais rápido, sem spawnar agente); projeto **grande/desconhecido**
+→ invocar o **codebase-explorer**:
 
 ```text
 Tarefa: "Explorar {destino} e entregar Executive Summary + Deep Dive: arquitetura, módulos

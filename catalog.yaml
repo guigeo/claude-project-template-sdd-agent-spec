@@ -15,6 +15,13 @@
 #   domains: api-web | data-pipeline | ai-llm | cli | frontend-fullstack | infra-devops
 #   clouds:  aws | gcp | azure | databricks | local
 #   stacks:  nomes de tecnologia em kebab-case (python, spark, fastapi, terraform...)
+#
+# CONVENÇÃO de `stacks` (evita falso-positivo): liste em `stacks` SÓ tokens que devem
+# disparar match sozinhos. NÃO misture uma linguagem genérica (python) com um framework
+# específico (aws-lambda, pyspark) na mesma lista — o OR-dentro-da-dimensão casaria pelo
+# token genérico e puxaria o componente p/ qualquer projeto naquela linguagem. Se o
+# discriminador é o framework, liste só o framework. `python` em stacks só quando o
+# componente serve a QUALQUER projeto Python (ex.: python-developer, code-cleaner).
 
 version: "1.0"
 updated: "2026-06-10"
@@ -148,7 +155,7 @@ agents:
     category: aws
     scope: optional
     clouds: [aws]
-    stacks: [aws-lambda, python]
+    stacks: [aws-lambda]   # discriminador é aws-lambda; 'python' genérico removido (puxava p/ qualquer projeto Python)
   - name: aws-deployer
     path: .claude/agents/aws/aws-deployer.md
     category: aws
@@ -252,7 +259,7 @@ commands:
 kbs:
   - name: pyspark
     path: .claude/kb/pyspark/
-    stacks: [python, pyspark, spark]
+    stacks: [pyspark, spark]   # 'python' genérico removido: pyspark/spark já são o discriminador (puxava p/ qualquer projeto Python)
     domains: [data-pipeline]
     last_validated: "2026-06-10"
     library_version: "Spark 3.5+/4.0"
