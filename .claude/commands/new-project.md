@@ -38,7 +38,7 @@ Se o diretório de destino já existir e não estiver vazio: **abortar** e avisa
 
 Fazer as perguntas **uma de cada vez**, aguardando resposta. São as mesmas 6 perguntas
 do `/project-init` (P1–P6) — seguir o texto exato de
-[.claude/commands/core/project-init.md](.claude/commands/core/project-init.md), Passo 2:
+[.claude/commands/project-init.md](.claude/commands/project-init.md), Passo 2:
 
 1. **P1 — Identidade:** o que é o projeto, em uma frase
 2. **P2 — Stack:** linguagens, frameworks, bibliotecas
@@ -129,7 +129,7 @@ Montar o filho em `{destino}/{nome}`:
 
 ```text
 COPIAR:
-  .claude/commands/           → tudo, EXCETO core/new-project.md
+  .claude/commands/           → tudo, EXCETO new-project.md
   .claude/sdd/                → tudo
   .claude/dev/                → tudo
   .claude/kb/_templates/      → tudo
@@ -245,7 +245,7 @@ PRÓXIMOS PASSOS:
 
 ## Referências
 
-- Entrevista e templates de agentes de domínio: [.claude/commands/core/project-init.md](.claude/commands/core/project-init.md)
+- Entrevista e templates de agentes de domínio: [.claude/commands/project-init.md](.claude/commands/project-init.md)
 - Catálogo: [catalog.yaml](../../../catalog.yaml)
 - Agente criador de KBs: [.claude/agents/exploration/kb-architect.md](.claude/agents/exploration/kb-architect.md)
 - Fallback sem seleção: [setup.sh](../../../setup.sh) (copia tudo)

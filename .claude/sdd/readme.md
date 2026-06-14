@@ -733,7 +733,7 @@ Design phase matches agents using these keywords extracted from agent files:
 | Dev Loop | `.claude/dev/` |
 | Agents | `.claude/agents/` |
 | Knowledge Base | `.claude/kb/` |
-| Commands | `.claude/commands/workflow/` |
+| Commands | `.claude/commands/` |
 | Templates | `.claude/sdd/templates/` |
 
 ---

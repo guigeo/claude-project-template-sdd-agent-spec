@@ -92,7 +92,9 @@ Para cada candidato generalizável:
 
 ```text
 1. ENRIQUECER existente vs KB NOVA?
-   - Consultar o acervo (KBs locais + template via template-link.yaml)
+   - Consultar o acervo: KBs locais em `.claude/kb/` + as do template
+     (resolver `template_path` lendo `.claude/template-link.yaml` — fica na RAIZ
+     `.claude/`, NÃO em `.claude/kb/`; se não existir, seguir só com o acervo local)
    - Cabe num domínio existente → adicionar pattern/concept lá
    - É um tema novo que vai crescer → propor domínio novo
 
@@ -188,7 +190,7 @@ Opcional: oferecer encadear `/contribute` na hora.
 
 ## Referências
 
-- Próximo passo (envia ao acervo): `.claude/commands/core/contribute.md`
+- Próximo passo (envia ao acervo): `.claude/commands/contribute.md`
 - Templates de KB: `.claude/kb/_templates/`
 - Limites de tamanho: `.claude/kb/_index.yaml`
 - Mesmo teste de generalização do `/contribute` (técnica vs negócio)

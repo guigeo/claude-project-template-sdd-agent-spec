@@ -218,26 +218,26 @@ agents:
 # =============================================================================
 
 commands:
-  - { name: project-init,  path: .claude/commands/core/project-init.md,    scope: core }
-  - { name: sync-context,  path: .claude/commands/core/sync-context.md,    scope: core }
-  - { name: memory,        path: .claude/commands/core/memory.md,          scope: core }
-  - { name: readme-maker,  path: .claude/commands/core/readme-maker.md,    scope: core }
-  - { name: telemetry,     path: .claude/commands/core/telemetry.md,       scope: core }
-  - { name: brainstorm,    path: .claude/commands/workflow/brainstorm.md,  scope: core }
-  - { name: define,        path: .claude/commands/workflow/define.md,      scope: core }
-  - { name: design,        path: .claude/commands/workflow/design.md,      scope: core }
-  - { name: build,         path: .claude/commands/workflow/build.md,       scope: core }
-  - { name: ship,          path: .claude/commands/workflow/ship.md,        scope: core }
-  - { name: iterate,       path: .claude/commands/workflow/iterate.md,     scope: core }
-  - { name: create-pr,     path: .claude/commands/workflow/create-pr.md,   scope: core }
-  - { name: create-kb,     path: .claude/commands/knowledge/create-kb.md,  scope: core }
-  - { name: review,        path: .claude/commands/review/review.md,        scope: core }
-  - { name: dev,           path: .claude/commands/dev/dev.md,              scope: core }
+  - { name: project-init,  path: .claude/commands/project-init.md,    scope: core }
+  - { name: sync-context,  path: .claude/commands/sync-context.md,    scope: core }
+  - { name: memory,        path: .claude/commands/memory.md,          scope: core }
+  - { name: readme-maker,  path: .claude/commands/readme-maker.md,    scope: core }
+  - { name: telemetry,     path: .claude/commands/telemetry.md,       scope: core }
+  - { name: brainstorm,    path: .claude/commands/brainstorm.md,  scope: core }
+  - { name: define,        path: .claude/commands/define.md,      scope: core }
+  - { name: design,        path: .claude/commands/design.md,      scope: core }
+  - { name: build,         path: .claude/commands/build.md,       scope: core }
+  - { name: ship,          path: .claude/commands/ship.md,        scope: core }
+  - { name: iterate,       path: .claude/commands/iterate.md,     scope: core }
+  - { name: create-pr,     path: .claude/commands/create-pr.md,   scope: core }
+  - { name: create-kb,     path: .claude/commands/create-kb.md,  scope: core }
+  - { name: review,        path: .claude/commands/review.md,        scope: core }
+  - { name: dev,           path: .claude/commands/dev.md,              scope: core }
   # new-project é exclusivo do template — nunca copiado para filhos
-  - { name: new-project,   path: .claude/commands/core/new-project.md,     scope: template-only }
+  - { name: new-project,   path: .claude/commands/new-project.md,     scope: template-only }
   # contribute e distill rodam no filho, então precisam ser copiados para lá
-  - { name: contribute,    path: .claude/commands/core/contribute.md,      scope: core }
-  - { name: distill,       path: .claude/commands/core/distill.md,         scope: core }
+  - { name: contribute,    path: .claude/commands/contribute.md,      scope: core }
+  - { name: distill,       path: .claude/commands/distill.md,         scope: core }
 
 # =============================================================================
 # KBs CENTRAIS — acervo reaproveitável, cresce a cada /new-project

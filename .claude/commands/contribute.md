@@ -156,7 +156,7 @@ Projetos futuros via /new-project já herdarão estas contribuições.
 ## Gate de qualidade
 
 ```text
-[ ] template-link.yaml lido e template_path validado
+[ ] `.claude/template-link.yaml` (raiz `.claude/`, não `.claude/kb/`) lido e template_path validado
 [ ] Candidatos detectados (novos + modificados)
 [ ] {projeto}-expert e itens com contexto de negócio excluídos automaticamente
 [ ] Cada candidato lido e triado (puro / contaminado / específico)
@@ -174,7 +174,7 @@ Projetos futuros via /new-project já herdarão estas contribuições.
 
 | Situação | Ação |
 |----------|------|
-| Sem template-link.yaml | Perguntar caminho do template ou abortar |
+| Sem `.claude/template-link.yaml` | Perguntar caminho do template ou abortar |
 | template_path não existe mais | Abortar com aviso (template movido/apagado) |
 | Nenhum candidato reaproveitável | Reportar "nada a contribuir" — é um resultado válido |
 | Candidato cita dados do projeto | Generalizar antes; se inseparável, descartar |
@@ -187,5 +187,5 @@ Projetos futuros via /new-project já herdarão estas contribuições.
 
 - Vínculo com o template: `.claude/template-link.yaml`
 - Catálogo (destino do registro): `{template}/catalog.yaml`
-- Comando irmão (criação): `.claude/commands/core/new-project.md`
+- Comando irmão (criação): `.claude/commands/new-project.md`
 - Regra de separação reaproveitável vs negócio: ver tabela no topo deste arquivo

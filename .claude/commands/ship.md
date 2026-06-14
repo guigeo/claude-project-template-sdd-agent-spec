@@ -181,5 +181,5 @@ do template. É assim que o conhecimento da feature deixa de morrer no projeto.
 - Agent: `.claude/agents/workflow/ship-agent.md`
 - Template: `.claude/sdd/templates/SHIPPED_TEMPLATE.md`
 - Contracts: `.claude/sdd/architecture/WORKFLOW_CONTRACTS.yaml`
-- Previous Phase: `.claude/commands/workflow/build.md`
-- Destilar aprendizado: `.claude/commands/core/distill.md`
+- Previous Phase: `.claude/commands/build.md`
+- Destilar aprendizado: `.claude/commands/distill.md`

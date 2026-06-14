@@ -18,12 +18,11 @@
 │   ├── aws/                # 4 agentes AWS (opcional)
 │   ├── data-engineering/   # 8 agentes Spark/Databricks (opcional)
 │   └── domain/             # Vazio — agentes do projeto criados por /new-project ou /project-init
-├── commands/
-│   ├── core/               # /project-init, /sync-context, /memory, /readme-maker
-│   ├── workflow/           # /brainstorm, /define, /design, /build, /ship, /iterate
-│   ├── knowledge/          # /create-kb
-│   ├── review/             # /review
-│   └── dev/                # /dev
+├── commands/               # Slash commands na raiz (invocação por nome pelado: /brainstorm, /distill…)
+│   ├── brainstorm.md, define.md, design.md, build.md, ship.md, iterate.md   # workflow SDD
+│   ├── new-project.md, project-init.md, contribute.md, distill.md           # ciclo template↔filho
+│   ├── create-kb.md, review.md, create-pr.md, dev.md                        # KB, review, dev loop
+│   └── sync-context.md, memory.md, readme-maker.md, telemetry.md            # utilitários
 ├── sdd/                    # Framework SDD: templates, exemplos, contratos
 ├── dev/                    # Dev Loop: templates de PROMPT
 └── kb/                     # Knowledge Base: acervo central reaproveitável + templates

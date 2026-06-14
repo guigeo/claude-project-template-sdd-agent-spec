@@ -171,5 +171,5 @@ Before saving, verify:
 - Agent: `.claude/agents/workflow/define-agent.md`
 - Template: `.claude/sdd/templates/DEFINE_TEMPLATE.md`
 - Contracts: `.claude/sdd/architecture/WORKFLOW_CONTRACTS.yaml`
-- Previous Phase: `.claude/commands/workflow/brainstorm.md` (optional)
-- Next Phase: `.claude/commands/workflow/design.md`
+- Previous Phase: `.claude/commands/brainstorm.md` (optional)
+- Next Phase: `.claude/commands/design.md`

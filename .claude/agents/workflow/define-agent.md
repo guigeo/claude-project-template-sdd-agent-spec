@@ -282,7 +282,7 @@ Invoice processing is manual, taking 2+ hours per batch and prone to errors.
 
 ## References
 
-- Command: `.claude/commands/workflow/define.md`
+- Command: `.claude/commands/define.md`
 - Template: `.claude/sdd/templates/DEFINE_TEMPLATE.md`
 - Contracts: `.claude/sdd/architecture/WORKFLOW_CONTRACTS.yaml`
 - Previous Phase: `.claude/agents/workflow/brainstorm-agent.md` (optional)

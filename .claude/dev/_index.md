@@ -334,7 +334,7 @@ Reference agents with `@agent-name` in tasks:
 
 | File | Purpose |
 |------|---------|
-| `.claude/commands/dev/dev.md` | Command definition |
+| `.claude/commands/dev.md` | Command definition |
 | `.claude/agents/dev/prompt-crafter.md` | PROMPT crafting agent |
 | `.claude/agents/dev/dev-loop-executor.md` | Execution agent |
 | `.claude/dev/templates/PROMPT_TEMPLATE.md` | Blank PROMPT template |

@@ -40,7 +40,7 @@ if [ -f "$TARGET_DIR/.claude/CLAUDE.md.template" ]; then
 fi
 
 # /new-project e exclusivo do template
-rm -f "$TARGET_DIR/.claude/commands/core/new-project.md"
+rm -f "$TARGET_DIR/.claude/commands/new-project.md"
 
 # Cria .gitignore basico
 cat > "$TARGET_DIR/.gitignore" << 'EOF'

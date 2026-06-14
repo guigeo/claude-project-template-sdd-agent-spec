@@ -487,4 +487,4 @@ Antes de marcar como concluído:
 - Template de agente: `.claude/agents/_template.md.example`
 - Templates de KB: `.claude/kb/_templates/`
 - Índice de KB: `.claude/kb/_index.yaml`
-- Próxima fase: `.claude/commands/workflow/brainstorm.md`
+- Próxima fase: `.claude/commands/brainstorm.md`

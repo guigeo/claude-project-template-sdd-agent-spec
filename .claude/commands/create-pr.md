@@ -394,7 +394,7 @@ BRANCH
 
 ## Related
 
-- Review Command: `.claude/commands/review/review.md`
+- Review Command: `.claude/commands/review.md`
 - Dual Reviewer Agent: `.claude/agents/code-quality/dual-reviewer.md`
 - CodeRabbit Config: `.coderabbit.yaml`
 - Template: `.github/PULL_REQUEST_TEMPLATE.md`

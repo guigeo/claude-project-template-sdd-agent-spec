@@ -33,12 +33,10 @@
 │   │   ├── aws/                     # Agentes AWS (4)
 │   │   ├── data-engineering/        # Agentes Spark/Databricks (8)
 │   │   └── domain/                  # Vazio — criado por /project-init nos projetos filhos
-│   ├── commands/
-│   │   ├── core/                    # project-init, sync-context, memory, readme-maker
-│   │   ├── workflow/                # brainstorm, define, design, build, ship, iterate
-│   │   ├── knowledge/               # create-kb
-│   │   ├── review/                  # review
-│   │   └── dev/                     # dev
+│   ├── commands/                    # Slash commands na raiz — invocados por nome pelado (/brainstorm, /distill)
+│   │   ├── brainstorm.md … ship.md  # workflow SDD (6)
+│   │   ├── new-project.md, project-init.md, contribute.md, distill.md  # ciclo template↔filho
+│   │   └── create-kb.md, review.md, create-pr.md, dev.md, sync-context.md, memory.md, …  # KB/review/dev/utils
 │   ├── sdd/                         # Framework SDD: templates, exemplos, arquitetura
 │   ├── dev/                         # Dev Loop: templates de PROMPT
 │   └── kb/
@@ -127,7 +125,7 @@ cp .claude/agents/_template.md.example .claude/agents/<categoria>/<nome>.md
 ### Adicionando um novo comando
 
 ```bash
-# 1. Criar em .claude/commands/<categoria>/<nome>.md
+# 1. Criar em .claude/commands/<nome>.md (raiz — sem subpasta, p/ invocar por nome pelado)
 # 2. Adicionar entrada na tabela de Comandos do CLAUDE.md
 # 3. Adicionar entrada na tabela do README.md
 # 4. Adicionar ao setup.sh se precisar de ajuste nos "próximos passos"
