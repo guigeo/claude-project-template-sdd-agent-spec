@@ -261,7 +261,7 @@ kbs:
     path: .claude/kb/pyspark/
     stacks: [pyspark, spark]   # 'python' genérico removido: pyspark/spark já são o discriminador (puxava p/ qualquer projeto Python)
     domains: [data-pipeline]
-    last_validated: "2026-06-10"
+    last_validated: "2026-06-24"
     library_version: "Spark 3.5+/4.0"
   - name: delta-lake
     path: .claude/kb/delta-lake/
@@ -274,18 +274,18 @@ kbs:
     stacks: [databricks, dlt, spark]
     domains: [data-pipeline]
     clouds: [databricks]
-    last_validated: "2026-06-13"
+    last_validated: "2026-06-24"
     library_version: "Lakeflow SDP (ex-DLT), docs 2026-06"
   - name: arquitetura-medalhao
     path: .claude/kb/arquitetura-medalhao/
     stacks: [databricks, spark, delta-lake]
     domains: [data-pipeline]
-    last_validated: "2026-06-10"
+    last_validated: "2026-06-24"
   - name: qualidade-de-dados
     path: .claude/kb/qualidade-de-dados/
     stacks: [spark, databricks]
     domains: [data-pipeline]
-    last_validated: "2026-06-10"
+    last_validated: "2026-06-24"
   - name: data-mesh
     path: .claude/kb/data-mesh/
     stacks: [databricks]

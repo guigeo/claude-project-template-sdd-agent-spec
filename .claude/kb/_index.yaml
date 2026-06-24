@@ -2,7 +2,7 @@
 # Machine-readable registry for KB domains
 
 version: "1.0"
-last_updated: "2026-06-10"
+last_updated: "2026-06-24"
 
 # File Size Limits (SINGLE SOURCE OF TRUTH)
 limits:
@@ -43,6 +43,7 @@ domains:
       - { name: performance-essentials, path: patterns/performance-essentials.md }
       - { name: casting-defensivo, path: patterns/casting-defensivo.md }
       - { name: logica-pura-testavel, path: patterns/logica-pura-testavel.md }
+      - { name: deterministic-tiebreak-in-aggregation, path: patterns/deterministic-tiebreak-in-aggregation.md }
 
   delta-lake:
     name: Delta Lake
@@ -71,6 +72,7 @@ domains:
       - { name: auto-cdc-scd, path: patterns/auto-cdc-scd.md }
       - { name: jobs-orchestration, path: patterns/jobs-orchestration.md }
       - { name: autoria-streaming-table, path: patterns/autoria-streaming-table.md }
+      - { name: notebook-vs-file-libraries, path: patterns/notebook-vs-file-libraries.md }
 
   arquitetura-medalhao:
     name: Arquitetura Medalhão
@@ -83,6 +85,7 @@ domains:
     patterns:
       - { name: contratos-e-nomenclatura, path: patterns/contratos-e-nomenclatura.md }
       - { name: modelagem-silver-e-gold, path: patterns/modelagem-silver-e-gold.md }
+      - { name: mart-sobre-mart, path: patterns/mart-sobre-mart.md }
 
   qualidade-de-dados:
     name: Qualidade de Dados

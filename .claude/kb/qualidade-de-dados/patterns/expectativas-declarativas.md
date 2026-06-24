@@ -1,7 +1,7 @@
 # Expectativas Declarativas
 
 > **Propósito**: Regras de qualidade declaradas junto à definição da tabela, não espalhadas no código
-> **Validado**: 2026-06-10
+> **Validado**: 2026-06-24
 
 ## Quando usar
 
@@ -43,6 +43,14 @@ RULES = {
 | `@dp.expect_or_drop` | Removida (contada) | Regras críticas por linha |
 | `@dp.expect_or_fail` | Aborta o update | Problemas estruturais de lote |
 | `@dp.expect_all{_or_drop,_or_fail}` | dict de regras | Agrupar regras da tabela |
+
+**Heurística `expect` vs `expect_or_drop`** quando o nulo vira chave de
+agrupamento numa mart agregada: dropar (`expect_or_drop`) quando o nulo geraria
+uma chave "fantasma" que não deveria existir no resultado (ex.: uma célula de
+índice espacial nula virando "região" no mapa); avisar (`expect`, warn) quando
+o nulo é raro e dropar faria uma entidade válida desaparecer silenciosamente de
+uma contagem onde ela deveria continuar visível (ex.: entidade sem a chave de
+agrupamento, mas que ainda deve ser contada no total geral).
 
 ## Exemplo de uso
 
