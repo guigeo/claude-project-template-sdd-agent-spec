@@ -128,6 +128,10 @@ Agente:        escrever versão generalizada em
 Ao generalizar um agente: remover `name: {projeto}-*`, trocar exemplos do projeto por
 exemplos neutros, remover seção de contexto de negócio, ajustar caminhos de KB.
 
+**Convenção de idioma do acervo:** a prosa explicativa (KBs e descrições) vai em
+**português**; código, nomes de API e keywords técnicas ficam em inglês por natureza.
+Ao escrever no template, seguir o idioma do acervo, não o do projeto de origem.
+
 ### Passo 6: Commit no template e relatório
 
 ```bash

@@ -1,40 +1,41 @@
+<!-- Prosa em português; código, nomes de API e keywords técnicas em inglês. Convenção: .claude/kb/_index.yaml -->
 # {{CONCEPT_NAME}}
 
-> **Purpose**: {{ONE_LINE_DESCRIPTION}}
-> **Confidence**: {{CONFIDENCE_LEVEL}}
-> **MCP Validated**: {{VALIDATION_DATE}}
+> **Propósito**: {{ONE_LINE_DESCRIPTION}}
+> **Confiança**: {{CONFIDENCE_LEVEL}}
+> **Validado**: {{VALIDATION_DATE}}
 
-## Overview
+## Visão geral
 
 {{OVERVIEW_2_3_SENTENCES}}
 
-## The Pattern
+## O padrão
 
 ```{{LANGUAGE}}
 {{CODE_EXAMPLE_10_30_LINES}}
 ```
 
-## Quick Reference
+## Referência rápida
 
-| Input | Output | Notes |
-|-------|--------|-------|
+| Entrada | Saída | Notas |
+|---------|-------|-------|
 | `{{EXAMPLE_INPUT}}` | `{{EXAMPLE_OUTPUT}}` | {{NOTES}} |
 
-## Common Mistakes
+## Erros comuns
 
-### Wrong
+### Errado
 
 ```{{LANGUAGE}}
 {{ANTI_PATTERN}}
 ```
 
-### Correct
+### Certo
 
 ```{{LANGUAGE}}
 {{CORRECT_PATTERN}}
 ```
 
-## Related
+## Relacionados
 
 - [{{RELATED_CONCEPT}}](../concepts/{{RELATED_CONCEPT_FILE}}.md)
 - [{{RELATED_PATTERN}}](../patterns/{{RELATED_PATTERN_FILE}}.md)

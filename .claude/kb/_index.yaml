@@ -1,5 +1,10 @@
 # Knowledge Base Index
 # Machine-readable registry for KB domains
+#
+# CONVENÇÃO DE IDIOMA: a prosa explicativa das KBs (quando usar, por quê, descrições)
+# é escrita em PORTUGUÊS. Código, nomes de API e keywords técnicas ficam em inglês por
+# natureza (streaming table, ROW_NUMBER, materialized view…). Aplicada por /create-kb,
+# /distill e /contribute. Acervo legado é misto: converter oportunisticamente ao editar.
 
 version: "1.0"
 last_updated: "2026-06-24"

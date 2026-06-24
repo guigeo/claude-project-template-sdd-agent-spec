@@ -102,6 +102,8 @@ Para cada candidato generalizável:
    - MANTÉM: a técnica, a função/API, o modo de falha, a regra prática
    - SUBSTITUI: substantivos do projeto → neutros; valores específicos → exemplo genérico + nota
    - REMOVE: racional de negócio, contexto de domínio
+   - IDIOMA: prosa explicativa em PORTUGUÊS (convenção do acervo); código, nomes de
+     API e keywords técnicas ficam em inglês por natureza (streaming table, ROW_NUMBER…)
    - VERIFICA: nenhum termo da lista do Passo 1 sobrou no texto final
 ```
 
