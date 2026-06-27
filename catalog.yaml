@@ -298,3 +298,21 @@ kbs:
     clouds: [databricks]
     last_validated: "2026-06-13"
     library_version: "Databricks SQL H3/ST_*, docs 2026"
+  - name: maplibre
+    path: .claude/kb/maplibre/
+    stacks: [maplibre, typescript, web]
+    domains: [frontend, geospatial]
+    last_validated: "2026-06-27"
+    library_version: "MapLibre GL JS 5.x, pmtiles 4.x"
+  - name: pmtiles-tippecanoe
+    path: .claude/kb/pmtiles-tippecanoe/
+    stacks: [pmtiles, tippecanoe]
+    domains: [geospatial, data-pipeline]
+    last_validated: "2026-06-27"
+    library_version: "tippecanoe (felt), go-pmtiles 1.x"
+  - name: geospatial-etl
+    path: .claude/kb/geospatial-etl/
+    stacks: [gdal, geopandas, python]
+    domains: [geospatial, data-pipeline]
+    last_validated: "2026-06-27"
+    library_version: "GDAL/ogr2ogr, pyogrio, geopandas 1.x"
